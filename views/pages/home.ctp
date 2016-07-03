@@ -9,6 +9,5 @@
 		<li><?php echo $this->Html->link(__('New Category', true), array('controller' => 'categories', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Questions', true), array('controller' => 'questions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Evaluations', true), array('controller' => 'evaluations', 'action' => 'add')); ?> </li>
-		
 	</ul>
 </div>

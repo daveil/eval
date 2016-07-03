@@ -7,6 +7,7 @@
 		echo $this->Form->input('name');
 		echo $this->Form->input('code');
 		echo $this->Form->input('precentage');
+		echo $this->Form->input('for_masters');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
