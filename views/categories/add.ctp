@@ -4,6 +4,8 @@
 		<legend><?php __('Add Category'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
+		echo $this->Form->input('code');
+		echo $this->Form->input('precentage');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
