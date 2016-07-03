@@ -2,7 +2,7 @@
 class EvaluationsController extends AppController {
 
 	var $name = 'Evaluations';
-
+	var $uses = array('Evaluation','Category');
 	function index() {
 		$this->Evaluation->recursive = 0;
 		$this->set('evaluations', $this->paginate());
@@ -28,7 +28,21 @@ class EvaluationsController extends AppController {
 		}
 		$students = $this->Evaluation->Student->find('list');
 		$teachers = $this->Evaluation->Teacher->find('list');
-		$this->set(compact('students', 'teachers'));
+		$categories = $this->Category->find('all');
+		$questions = $this->Category->Question->find('all');
+		$group_questions = array();
+		//Initialize group_questions[category] 
+		foreach($categories as $category){
+			$cat_id =  $category['Category']['id'];
+			$group_questions[$cat_id] = array();
+		}
+		//Push questions to group_questions[category]
+		foreach($questions as $question){
+			$cat_id =  $question['Question']['category_id'];
+			array_push($group_questions[$cat_id],$question);
+		}
+			
+		$this->set(compact('students', 'teachers','categories','group_questions'));
 	}
 
 	function edit($id = null) {

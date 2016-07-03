@@ -1,13 +1,63 @@
+<style type="text/css">
+div.question{float:left;width:60%;display:inline-block;}
+div.choices{float:right;width:40%;display:inline-block;}
+div.choices>input[type="radio"]{display:inline-block;width:50px;float:none;}
+div.choices>span{width:50px;display:inline-block;text-align:center;}
+</style>
 <div class="evaluations form">
 <?php echo $this->Form->create('Evaluation');?>
 	<fieldset>
-		<legend><?php __('Add Evaluation'); ?></legend>
+		<legend><?php __('New Evaluation'); ?></legend>
 	<?php
 		echo $this->Form->input('student_id');
 		echo $this->Form->input('teacher_id');
-		echo $this->Form->input('score');
 	?>
 	</fieldset>
+	<?php foreach($categories as $category):?>
+		<?php
+			$cat_id = $category['Category']['id'];
+			$code = explode('-',$category['Category']['code']);
+			$title = 'Test '.$code[0];
+			if(isset($code[1])){
+				$title.= ' '.$code[1];
+			}
+			$title .=' '.$category['Category']['name'];
+			$title .=' ('.$category['Category']['precentage'].'%)';
+		?>
+		<fieldset>
+			<legend><?php echo $title;?></legend>
+			<?php if(count($group_questions[$cat_id])):?>
+			
+				<div class="choices">
+					<span>10</span>
+					<span>8</span>
+					<span>6</span>
+					<span>4</span>
+					<span>2</span>
+				</div>
+				<div class="clearfix"></div>
+				<ol>
+					<?php foreach($group_questions[$cat_id] as $question):
+							$que_id = $question['Question']['id'];
+					?>
+						<li>
+							<span class="question">
+								<?php echo $question['Question']['question'];?>
+							</span>
+							<div class="choices">
+								<input type="radio" name="EvaluationResponse<?php echo $que_id;?>" value="10" />
+								<input type="radio" name="EvaluationResponse<?php echo $que_id;?>" value="8" />
+								<input type="radio" name="EvaluationResponse<?php echo $que_id;?>" value="6" />
+								<input type="radio" name="EvaluationResponse<?php echo $que_id;?>" value="4" />
+								<input type="radio" name="EvaluationResponse<?php echo $que_id;?>" value="2" />
+							</div>
+						</li>
+					<?php endforeach;?>
+				</ol>
+			<?php endif;?>
+			
+		</fieldset>
+	<?php endforeach;?>
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
 <div class="actions">
