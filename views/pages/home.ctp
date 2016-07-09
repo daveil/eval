@@ -5,7 +5,7 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('Profile', true), array('controller' => 'students', 'action' => 'add')); ?> </li>
 		<li>
-			<a href="#faculty">Faculty Evaluation</a>
+			<a href="#faculty" class="dropdown-toggle">Faculty Evaluation</a>
 			<ul id="faculty">
 				<?php 
 					foreach($Teachers as $teacher):
