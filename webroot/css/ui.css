@@ -1,0 +1,23 @@
+#content{
+	position:relative;
+}
+#content>div,div.actions{
+	float:none;
+}
+#content>div{
+	padding-top:30px;
+	margin-top:10px;
+	border-left:none;
+}
+div.actions{
+	position:absolute;
+	top:-30px;
+	width: auto;
+}
+div.actions ul>li{
+	display:inline-block;
+	width:170px;
+}
+div.actions ul>li a{
+	border-radius:0;
+}
