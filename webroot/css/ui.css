@@ -21,3 +21,10 @@ div.actions ul>li{
 div.actions ul>li a{
 	border-radius:0;
 }
+div.actions ul>li>ul{
+	position:absolute;
+	display:none;
+}
+div.actions ul>li>ul.active{
+	display:inline-block;
+}
