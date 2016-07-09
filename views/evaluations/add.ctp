@@ -4,6 +4,7 @@
 <?php echo $this->Html->script('evaluation',array('inline'=>false)); ?>
 <div class="evaluations form">
 <?php echo $this->Form->create('Evaluation');?>
+	<h2>Evaluation: <?php echo $teacher_name;?></h2>
 	<?php foreach($categories as $page=>$category):?>
 		<?php
 			$cat_id = $category['Category']['id'];
@@ -63,5 +64,5 @@
 		</div>
 		
 	</div>
-<?php echo $this->Form->end(__('Submit', true));?>
+<?php //echo $this->Form->end(__('Submit', true));?>
 </div>
