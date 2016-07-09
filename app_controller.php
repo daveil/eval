@@ -31,4 +31,12 @@
  * @subpackage    cake.app
  */
 class AppController extends Controller {
+	function beforeFilter(){
+		App::Import('Model','Teacher');
+		$this->Teacher = new Teacher;
+		$this->Teacher->recursive=0;
+		$Teachers =  $this->Teacher->find('all');
+		$this->set(compact('Teachers'));
+		return parent::beforeFilter();
+	}
 }

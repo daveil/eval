@@ -26,6 +26,12 @@ class EvaluationsController extends AppController {
 				$this->Session->setFlash(__('The evaluation could not be saved. Please, try again.', true));
 			}
 		}
+		if(isset($this->params['named']['teacher_id'])){
+			$teacher_id = $this->params['named']['teacher_id'];
+			$teacher = $this->Evaluation->Teacher->findById($teacher_id);
+			$teacher_name = $teacher['Teacher']['full_name'];
+			$this->set(compact('teacher_id', 'teacher','teacher_name'));
+		}
 		$students = $this->Evaluation->Student->find('list');
 		$teachers = $this->Evaluation->Teacher->find('list');
 		$categories = $this->Category->find('all');
