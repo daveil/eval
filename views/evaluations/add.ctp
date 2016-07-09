@@ -1,13 +1,10 @@
+<style type="text/css">
+.page{display:none;}
+</style>
+<?php echo $this->Html->script('evaluation',array('inline'=>false)); ?>
 <div class="evaluations form">
 <?php echo $this->Form->create('Evaluation');?>
-	<fieldset>
-		<legend><?php __('New Evaluation'); ?></legend>
-	<?php
-		echo $this->Form->input('student_id');
-		echo $this->Form->input('teacher_id');
-	?>
-	</fieldset>
-	<?php foreach($categories as $category):?>
+	<?php foreach($categories as $page=>$category):?>
 		<?php
 			$cat_id = $category['Category']['id'];
 			$code = explode('-',$category['Category']['code']);
@@ -18,7 +15,7 @@
 			$title .=' '.$category['Category']['name'];
 			$title .=' ('.$category['Category']['precentage'].'%)';
 		?>
-		<fieldset>
+		<fieldset class="page page-<?php echo $page; ?>">
 			<legend><?php echo $title;?></legend>
 			<?php if(count($group_questions[$cat_id])):?>
 			
@@ -28,6 +25,7 @@
 					<span>6</span>
 					<span>4</span>
 					<span>2</span>
+					<span>Score</span>
 				</div>
 				<div class="clearfix"></div>
 				<ol>
@@ -39,33 +37,31 @@
 								<?php echo $question['Question']['question'];?>
 							</span>
 							<div class="choices">
-								<input type="radio" name="EvaluationResponse<?php echo $que_id;?>" value="10" />
-								<input type="radio" name="EvaluationResponse<?php echo $que_id;?>" value="8" />
-								<input type="radio" name="EvaluationResponse<?php echo $que_id;?>" value="6" />
-								<input type="radio" name="EvaluationResponse<?php echo $que_id;?>" value="4" />
-								<input type="radio" name="EvaluationResponse<?php echo $que_id;?>" value="2" />
+								<input type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="10" />
+								<input type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="8" />
+								<input type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="6" />
+								<input type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="4" />
+								<input type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="2" />
+								<input type="text" name="EvaluationScore<?php echo $que_id;?>"  readonly="readonly" />
 							</div>
 						</li>
 					<?php endforeach;?>
 				</ol>
 			<?php endif;?>
-			
+			<div class="total pull-right" style="width:60px;padding-right:25px;">
+				<label for="">Total</label>
+				<input type="text" class="total total-<?php echo $page;?>" name="EvaluationTotal<?php echo $page;?>"  readonly="readonly" />
+			</div>
 		</fieldset>
 	<?php endforeach;?>
+	<div class="controls">
+		<div class="action">
+				<button id="back-button">Back</button>
+		</div>
+		<div class="action pull-right">
+				<button id="proceed-button">Proceed</button>
+		</div>
+		
+	</div>
 <?php echo $this->Form->end(__('Submit', true));?>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Evaluations', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Students', true), array('controller' => 'students', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student', true), array('controller' => 'students', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Teachers', true), array('controller' => 'teachers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Teacher', true), array('controller' => 'teachers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Evaluation Details', true), array('controller' => 'evaluation_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Evaluation Detail', true), array('controller' => 'evaluation_details', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Evaluation Results', true), array('controller' => 'evaluation_results', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Evaluation Result', true), array('controller' => 'evaluation_results', 'action' => 'add')); ?> </li>
-	</ul>
 </div>
