@@ -30,8 +30,6 @@
 
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('ui');
-
-		echo $scripts_for_layout;
 	?>
 </head>
 <body>
@@ -49,5 +47,11 @@
 		<div id="footer">
 		</div>
 	</div>
+	<?php
+		echo $this->Html->script('bower_components/jquery/dist/jquery.min');
+		echo $this->Html->script('home');
+
+		echo $scripts_for_layout;
+	?>
 </body>
 </html>
