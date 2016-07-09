@@ -1,3 +1,4 @@
+/* Menu Navigation */
 #content{
 	position:relative;
 }
@@ -28,3 +29,8 @@ div.actions ul>li>ul{
 div.actions ul>li>ul.active{
 	display:inline-block;
 }
+/** Evaluation Questions */
+div.question{float:left;width:60%;display:inline-block;}
+div.choices{float:right;width:40%;display:inline-block;}
+div.choices>input[type="radio"]{display:inline-block;width:50px;float:none;}
+div.choices>span{width:50px;display:inline-block;text-align:center;}

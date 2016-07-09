@@ -1,9 +1,3 @@
-<style type="text/css">
-div.question{float:left;width:60%;display:inline-block;}
-div.choices{float:right;width:40%;display:inline-block;}
-div.choices>input[type="radio"]{display:inline-block;width:50px;float:none;}
-div.choices>span{width:50px;display:inline-block;text-align:center;}
-</style>
 <div class="evaluations form">
 <?php echo $this->Form->create('Evaluation');?>
 	<fieldset>
