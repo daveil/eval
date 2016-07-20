@@ -23,10 +23,16 @@ $(document).ready(function(){
 		$.each(scores,function(i,s){
 			//Convert value to integer before adding
 			var score = parseInt($(s).val());
-			total+=score;
+			if(!isNaN(score))
+				total+=score;
 		});
 		//Display total to inputbox
 		$('.total-'+page_no).val(total);
+		//Formula
+		var average =  total/scores.length;
+		var percentage = parseInt($('.precent-'+page_no).val())/100;
+		var equivalent = average * percentage;
+		 $('.equiv-'+page_no).val(equivalent);
 	}
 	//Show initial current page
 	showCurrentPage(CURRENT_PAGE);
