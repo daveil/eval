@@ -9,12 +9,14 @@
 		<?php
 			$cat_id = $category['Category']['id'];
 			$code = explode('-',$category['Category']['code']);
+			$name =  $category['Category']['name'];
+			$percentage =  $category['Category']['precentage'];
 			$title = 'Test '.$code[0];
 			if(isset($code[1])){
 				$title.= ' '.$code[1];
 			}
-			$title .=' '.$category['Category']['name'];
-			$title .=' ('.$category['Category']['precentage'].'%)';
+			$title .=' '.$name;
+			$title .=' ('.$percentage.'%)';
 		?>
 		<fieldset class="page page-<?php echo $page; ?>">
 			<legend><?php echo $title;?></legend>
@@ -52,6 +54,8 @@
 			<div class="total pull-right" style="width:60px;padding-right:25px;">
 				<label for="">Total</label>
 				<input type="text" class="total total-<?php echo $page;?>" name="EvaluationTotal<?php echo $page;?>"  readonly="readonly" />
+				<input type="text" class="precent precent-<?php echo $page;?>" name="EvaluationPercent<?php echo $page;?>"  readonly="readonly" value="<?php echo $percentage;?>" />
+				<input type="text" class="equiv equiv-<?php echo $page;?>" name="EvaluationEquiv<?php echo $page;?>"  readonly="readonly" />
 			</div>
 		</fieldset>
 	<?php endforeach;?>
