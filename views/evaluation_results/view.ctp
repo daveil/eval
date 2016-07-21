@@ -16,9 +16,19 @@
 			<?php echo $this->Html->link($evaluationResult['Category']['name'], array('controller' => 'categories', 'action' => 'view', $evaluationResult['Category']['id'])); ?>
 			&nbsp;
 		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Total'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $evaluationResult['EvaluationResult']['total']; ?>
+			&nbsp;
+		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Score'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $evaluationResult['EvaluationResult']['score']; ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Equivalent'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $evaluationResult['EvaluationResult']['equivalent']; ?>
 			&nbsp;
 		</dd>
 	</dl>
