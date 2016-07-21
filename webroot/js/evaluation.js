@@ -31,8 +31,12 @@ $(document).ready(function(){
 		//Formula
 		var average =  total/scores.length;
 		var percentage = parseInt($('.precent-'+page_no).val())/100;
-		var equivalent = average * percentage;
-		 $('.equiv-'+page_no).val(equivalent);
+		var score = average * percentage;
+		 $('.score-'+page_no).val(score);
+	}
+	
+	function submitEvaluation(){
+		var data = $('#EvaluationAddForm').submit();
 	}
 	//Show initial current page
 	showCurrentPage(CURRENT_PAGE);
@@ -52,7 +56,8 @@ $(document).ready(function(){
 		if(curr_page<TOTAL_PAGES)
 			showCurrentPage(curr_page);
 		else
-			displayError('LAST_PAGE');
+			submitEvaluation();
+			
 	});
 	$('#back-button').click(function(e){
 		e.preventDefault();

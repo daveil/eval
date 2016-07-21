@@ -19,9 +19,9 @@ class EvaluationsController extends AppController {
 	function add() {
 		if (!empty($this->data)) {
 			$this->Evaluation->create();
-			if ($this->Evaluation->save($this->data)) {
-				$this->Session->setFlash(__('The evaluation has been saved', true));
-				$this->redirect(array('action' => 'index'));
+			if ($this->Evaluation->saveAll($this->data)) {
+				$this->Session->setFlash(__('Successfully Submitted', true));
+				$this->redirect(array('action' => 'success'));
 			} else {
 				$this->Session->setFlash(__('The evaluation could not be saved. Please, try again.', true));
 			}
@@ -48,7 +48,8 @@ class EvaluationsController extends AppController {
 			array_push($group_questions[$cat_id],$question);
 		}
 			
-		$this->set(compact('students', 'teachers','categories','group_questions'));
+		$student_id = 1;
+		$this->set(compact('students', 'teachers','categories','group_questions','student_id'));
 	}
 
 	function edit($id = null) {
@@ -84,4 +85,5 @@ class EvaluationsController extends AppController {
 		$this->Session->setFlash(__('Evaluation was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	function success(){}
 }
