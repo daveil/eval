@@ -4,8 +4,13 @@ class EvaluationsController extends AppController {
 	var $name = 'Evaluations';
 	var $uses = array('Evaluation','Category');
 	function index() {
-		$this->Evaluation->recursive = 0;
-		$this->set('evaluations', $this->paginate());
+		if (!empty($this->data)) {
+			$this->Evaluation->recursive =2;
+			$evaluation = $this->Evaluation->findByTeacherId($this->data['Evaluation']['teacher_id']);
+			$this->set(compact('evaluation'));
+		}
+		$teachers = $this->Evaluation->Teacher->find('list');
+		$this->set(compact('teachers'));
 	}
 
 	function view($id = null) {
