@@ -23,10 +23,20 @@ $(document).ready(function(){
 		$.each(scores,function(i,s){
 			//Convert value to integer before adding
 			var score = parseInt($(s).val());
-			total+=score;
+			if(!isNaN(score))
+				total+=score;
 		});
 		//Display total to inputbox
 		$('.total-'+page_no).val(total);
+		//Formula
+		var average =  total/scores.length;
+		var percentage = parseInt($('.precent-'+page_no).val())/100;
+		var score = average * percentage;
+		 $('.score-'+page_no).val(score);
+	}
+	
+	function submitEvaluation(){
+		var data = $('#EvaluationAddForm').submit();
 	}
 	//Show initial current page
 	showCurrentPage(CURRENT_PAGE);
@@ -46,7 +56,8 @@ $(document).ready(function(){
 		if(curr_page<TOTAL_PAGES)
 			showCurrentPage(curr_page);
 		else
-			displayError('LAST_PAGE');
+			submitEvaluation();
+			
 	});
 	$('#back-button').click(function(e){
 		e.preventDefault();

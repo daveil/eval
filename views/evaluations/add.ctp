@@ -5,16 +5,24 @@
 <div class="evaluations form">
 <?php echo $this->Form->create('Evaluation');?>
 	<h2>Evaluation: <?php echo $teacher_name;?></h2>
-	<?php foreach($categories as $page=>$category):?>
-		<?php
+	<?php 
+		echo $this->Form->input('student_id',array('type'=>'hidden','value'=>$student_id));
+		echo $this->Form->input('teacher_id',array('type'=>'hidden','value'=>$teacher_id));
+	?>
+	<?php 
+		$dtl_indx=0;
+		$res_indx=0;
+		foreach($categories as $page=>$category):
 			$cat_id = $category['Category']['id'];
 			$code = explode('-',$category['Category']['code']);
+			$name =  $category['Category']['name'];
+			$percentage =  $category['Category']['precentage'];
 			$title = 'Test '.$code[0];
 			if(isset($code[1])){
 				$title.= ' '.$code[1];
 			}
-			$title .=' '.$category['Category']['name'];
-			$title .=' ('.$category['Category']['precentage'].'%)';
+			$title .=' '.$name;
+			$title .=' ('.$percentage.'%)';
 		?>
 		<fieldset class="page page-<?php echo $page; ?>">
 			<legend><?php echo $title;?></legend>
@@ -43,18 +51,28 @@
 								<input type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="6" />
 								<input type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="4" />
 								<input type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="2" />
-								<input type="text" name="EvaluationScore<?php echo $que_id;?>"  readonly="readonly" />
+								<input type="text" id="EvaluationScore<?php echo $que_id;?>" name="data[EvaluationDetail][<?php echo $dtl_indx;?>][score]"   readonly="readonly" />
+								<input type="hidden" name="data[EvaluationDetail][<?php echo $dtl_indx;?>][question_id]" value="<?php echo $que_id;?>" />
 							</div>
 						</li>
-					<?php endforeach;?>
+					<?php
+						$dtl_indx++;
+						endforeach;
+					?>
 				</ol>
 			<?php endif;?>
 			<div class="total pull-right" style="width:60px;padding-right:25px;">
 				<label for="">Total</label>
-				<input type="text" class="total total-<?php echo $page;?>" name="EvaluationTotal<?php echo $page;?>"  readonly="readonly" />
+				<input type="text" class="total total-<?php echo $page;?>" id="EvaluationTotal<?php echo $page;?>" name="data[EvaluationResult][<?php echo $res_indx;?>][total]" readonly="readonly" />
+				<input type="hidden" class="precent precent-<?php echo $page;?>" name="EvaluationPercent<?php echo $page;?>"  readonly="readonly" value="<?php echo $percentage;?>" />
+				<input type="hidden" class="score score-<?php echo $page;?>" id="EvaluationScore<?php echo $page;?>" name="data[EvaluationResult][<?php echo $res_indx;?>][score]"  readonly="readonly" />
+				<input type="hidden" name="data[EvaluationResult][<?php echo $res_indx;?>][category_id]" value="<?php echo $cat_id;?>" />
 			</div>
 		</fieldset>
-	<?php endforeach;?>
+	<?php
+		$res_indx++;
+		endforeach;
+	?>
 	<div class="controls">
 		<div class="action">
 				<button id="back-button">Back</button>

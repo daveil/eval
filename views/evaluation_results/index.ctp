@@ -5,7 +5,9 @@
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('evaluation_id');?></th>
 			<th><?php echo $this->Paginator->sort('category_id');?></th>
+			<th><?php echo $this->Paginator->sort('total');?></th>
 			<th><?php echo $this->Paginator->sort('score');?></th>
+			<th><?php echo $this->Paginator->sort('equivalent');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -24,7 +26,9 @@
 		<td>
 			<?php echo $this->Html->link($evaluationResult['Category']['name'], array('controller' => 'categories', 'action' => 'view', $evaluationResult['Category']['id'])); ?>
 		</td>
+		<td><?php echo $evaluationResult['EvaluationResult']['total']; ?>&nbsp;</td>
 		<td><?php echo $evaluationResult['EvaluationResult']['score']; ?>&nbsp;</td>
+		<td><?php echo $evaluationResult['EvaluationResult']['equivalent']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $evaluationResult['EvaluationResult']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $evaluationResult['EvaluationResult']['id'])); ?>

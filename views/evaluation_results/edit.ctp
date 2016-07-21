@@ -6,7 +6,9 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('evaluation_id');
 		echo $this->Form->input('category_id');
+		echo $this->Form->input('total');
 		echo $this->Form->input('score');
+		echo $this->Form->input('equivalent');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
