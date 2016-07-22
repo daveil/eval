@@ -42,6 +42,12 @@ div.actions ul>li>ul{
 div.actions ul>li>ul.active{
 	display:inline-block;
 }
+#faculty{
+	width:inherit;
+}
+#faculty li{
+	display:inline;
+}
 /** Evaluation Questions */
 div.question{float:left;width:60%;display:inline-block;}
 div.choices{float:right;width:40%;display:inline-block;}
