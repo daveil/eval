@@ -88,6 +88,9 @@ div.three-columns>div.column{
 	margin:0 10px;
 }
 div.two-columns>div.column{
+	float:left;
 	width:45%;
+	display:inline-block;
+	margin:0 10px;
 }
 div.three-columns>div.column>*{width:100%;}
