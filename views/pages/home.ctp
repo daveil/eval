@@ -21,6 +21,7 @@
 			</ul>
 		</li>
 		<li><?php echo $this->Html->link(__('Result', true), array('controller' => 'evaluations', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Teachers', true), array('controller' => 'teachers', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('About Us', true), array('controller' => 'questions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

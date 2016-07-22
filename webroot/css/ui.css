@@ -42,6 +42,12 @@ div.actions ul>li>ul{
 div.actions ul>li>ul.active{
 	display:inline-block;
 }
+#faculty{
+	width:inherit;
+}
+#faculty li{
+	display:inline;
+}
 /** Evaluation Questions */
 div.question{float:left;width:60%;display:inline-block;}
 div.choices{float:right;width:40%;display:inline-block;}
@@ -76,4 +82,28 @@ form .action button:hover {
 	background:#4ca83d;
 	background: -webkit-gradient(linear, left top, left bottom, from(#85e573), to(#4ca83d));
 	background-image: -moz-linear-gradient(top, #85e573, #4ca83d);
+}
+div.two-columns:after,div.two-columns:before,
+div.three-columns:after,div.three-columns:before{
+	clear:both;
+}
+div.three-columns>div.column{
+	float:left;
+	width:30%;
+	display:inline-block;
+	margin:0 10px;
+}
+div.two-columns>div.column{
+	float:left;
+	width:45%;
+	display:inline-block;
+	margin:0 10px;
+}
+div.three-columns>div.column>*{width:100%;}
+#content .form,#content .index{
+	margin-top:50px;
+}
+#flashMessage{
+	margin-top:80px !important;
+	margin-bottom: -50px;
 }
