@@ -9,12 +9,14 @@
 	?>
 	</div>
 	<?php 
-		if(isset($evaluation)):
-			$teacher = $evaluation['Teacher'];
+		if(isset($results[0])):
+			$teacher = $results[0]['Teacher'];
 	?>
 	<div id="Teacher" class="column"> 
 		<h3>Teacher</h3>
 		<dl><?php $i = 0; $class = ' class="altrow"';?>
+		<dt>&nbsp;</dt>
+		<dd>&nbsp;</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Last Name'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $teacher['last_name']; ?>
@@ -40,7 +42,8 @@
 	</div>
 	<div id="Results" class="column">
 		<h3>Results</h3>
-		<?php if (!empty($evaluation['EvaluationResult'])):?>
+		<?php 
+		if (!empty($results[0])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php __('Category'); ?></th>
@@ -48,7 +51,8 @@
 	</tr>
 	<?php
 		$i = 0;
-		foreach ($evaluation['EvaluationResult'] as $evaluationResult):
+		if (!empty($results[0]['Category']['name'])):
+		foreach ($results as $evaluationResult):
 			$class = null;
 			if ($i++ % 2 == 0) {
 				$class = ' class="altrow"';
@@ -56,9 +60,16 @@
 		?>
 		<tr<?php echo $class;?>>
 			<td><?php echo $evaluationResult['Category']['name'];?></td>
-			<td><?php echo $evaluationResult['score'];?></td>
+			<td><?php echo $evaluationResult['0']['average_result'];?></td>
 		</tr>
-	<?php endforeach; ?>
+	<?php endforeach;?>
+	<?php else: ?>
+		<tr<?php echo $class;?>>
+			<td colspan="2">No Evaluation Yet</td>
+		</tr>
+	
+	<?php endif;?>
+	
 	</table>
 <?php endif; ?>
 
