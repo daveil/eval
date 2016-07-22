@@ -77,3 +77,17 @@ form .action button:hover {
 	background: -webkit-gradient(linear, left top, left bottom, from(#85e573), to(#4ca83d));
 	background-image: -moz-linear-gradient(top, #85e573, #4ca83d);
 }
+div.two-columns:after,div.two-columns:before,
+div.three-columns:after,div.three-columns:before{
+	clear:both;
+}
+div.three-columns>div.column{
+	float:left;
+	width:30%;
+	display:inline-block;
+	margin:0 10px;
+}
+div.two-columns>div.column{
+	width:45%;
+}
+div.three-columns>div.column>*{width:100%;}
