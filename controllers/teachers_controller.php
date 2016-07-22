@@ -4,8 +4,13 @@ class TeachersController extends AppController {
 	var $name = 'Teachers';
 
 	function index() {
+		if (!empty($this->data)) {
+			$id = $this->data['Teachers']['teacher_id'];
+			$this->data = $this->Teacher->read(null, $id);
+		}
 		$this->Teacher->recursive = 0;
-		$this->set('teachers', $this->paginate());
+		$teachers =  $this->Teacher->find('list');
+		$this->set(compact('teachers'));
 	}
 
 	function view($id = null) {
