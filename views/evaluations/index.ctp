@@ -1,14 +1,5 @@
-<style type="text/css">
-	.column{
-		display:inline-block;
-		width:35%;
-	}
-	#Form{
-		width:20%
-	}
-</style>
-<div>
-	<h2><?php __('Evaluation Results');?></h2>
+<h2><?php __('Evaluation Results');?></h2>
+<div class="three-columns">
 	<div id="Form" class="column">
 	<?php
 		echo $this->Form->create('Evaluation');
@@ -22,6 +13,7 @@
 			$teacher = $evaluation['Teacher'];
 	?>
 	<div id="Teacher" class="column"> 
+		<h3>Teacher</h3>
 		<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Last Name'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
@@ -47,6 +39,7 @@
 
 	</div>
 	<div id="Results" class="column">
+		<h3>Results</h3>
 		<?php if (!empty($evaluation['EvaluationResult'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
