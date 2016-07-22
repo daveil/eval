@@ -73,6 +73,7 @@
 		$res_indx++;
 		endforeach;
 	?>
+	<input name="data[Evaluation][score]" type="hidden" id="EvaluationScore">
 	<div class="controls">
 		<div class="action">
 				<button id="back-button">Back</button>

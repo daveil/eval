@@ -36,6 +36,14 @@ $(document).ready(function(){
 	}
 	
 	function submitEvaluation(){
+		var scores = $('.score');
+		var total = 0;
+		$.each(scores,function(i,s){
+			var score = parseFloat($(s).val());
+			if(!isNaN(score))
+				total+=score;
+		});
+		$('#EvaluationScore').val(total);
 		var data = $('#EvaluationAddForm').submit();
 	}
 	//Show initial current page
