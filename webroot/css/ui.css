@@ -100,3 +100,10 @@ div.two-columns>div.column{
 	margin:0 10px;
 }
 div.three-columns>div.column>*{width:100%;}
+#content .form,#content .index{
+	margin-top:50px;
+}
+#flashMessage{
+	margin-top:80px !important;
+	margin-bottom: -50px;
+}
