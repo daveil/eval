@@ -7,7 +7,8 @@ class EvaluationsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Evaluation->recursive =2;
 			$evaluation = $this->Evaluation->findByTeacherId($this->data['Evaluation']['teacher_id']);
-			$this->set(compact('evaluation'));
+			$results = $this->Evaluation->getAverageResult($this->data['Evaluation']['teacher_id']);
+			$this->set(compact('evaluation','results'));
 		}
 		$teachers = $this->Evaluation->Teacher->find('list');
 		$this->set(compact('teachers'));
