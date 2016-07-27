@@ -42,8 +42,13 @@
 	</div>
 	<div id="Results" class="column">
 		<h3>Results</h3>
+
 		<?php 
 		if (!empty($results[0])):?>
+		<dl><?php $i = 0; $class = ' class="altrow"';?>
+		<dt>Average</dt>
+		<dd><?php echo $results[0]['0']['average_score']; ?></dd>
+		</dl>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php __('Category'); ?></th>

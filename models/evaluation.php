@@ -67,7 +67,7 @@ class Evaluation extends AppModel {
 						LEFT JOIN `categories` as Category 
 							ON (`evaluation_results`.`category_id` = `Category`.`id`)
 					WHERE `Teacher`.id = $teacher_id
-					GROUP BY evaluations.`teacher_id`, evaluation_results.category_id
+					GROUP BY  evaluation_results.category_id
 				";
 		return $this->query($query);
 	}

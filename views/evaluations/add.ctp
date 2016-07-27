@@ -64,8 +64,8 @@
 			<div class="total pull-right" style="width:60px;padding-right:25px;">
 				<label for="">Total</label>
 				<input type="text" class="total total-<?php echo $page;?>" id="EvaluationTotal<?php echo $page;?>" name="data[EvaluationResult][<?php echo $res_indx;?>][total]" readonly="readonly" />
-				<input type="hidden" class="precent precent-<?php echo $page;?>" name="EvaluationPercent<?php echo $page;?>"  readonly="readonly" value="<?php echo $percentage;?>" />
-				<input type="hidden" class="score score-<?php echo $page;?>" id="EvaluationScore<?php echo $page;?>" name="data[EvaluationResult][<?php echo $res_indx;?>][score]"  readonly="readonly" />
+				<input type="text" class="precent precent-<?php echo $page;?>" name="EvaluationPercent<?php echo $page;?>"  readonly="readonly" value="<?php echo $percentage;?>" />
+				<input type="text" class="score score-<?php echo $page;?>" id="EvaluationScore<?php echo $page;?>" name="data[EvaluationResult][<?php echo $res_indx;?>][score]"  readonly="readonly" />
 				<input type="hidden" name="data[EvaluationResult][<?php echo $res_indx;?>][category_id]" value="<?php echo $cat_id;?>" />
 			</div>
 		</fieldset>
