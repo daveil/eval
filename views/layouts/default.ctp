@@ -18,7 +18,7 @@
  */
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -30,6 +30,8 @@
 
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('ui');
+		echo $this->Html->css('plugins/bootstrap');
+		echo $this->Html->css('plugins/summernote');
 	?>
 </head>
 <body>
@@ -48,8 +50,12 @@
 		</div>
 	</div>
 	<?php
-		echo $this->Html->script('bower_components/jquery/dist/jquery.min');
+		//echo $this->Html->script('bower_components/jquery/dist/jquery.min');
+		echo $this->Html->script('plugins/jquery-1.9.1.min');
+		echo $this->Html->script('plugins/bootstrap');
+		echo $this->Html->script('plugins/summernote');
 		echo $this->Html->script('home');
+		echo $this->Html->script('example');
 
 		echo $scripts_for_layout;
 	?>
