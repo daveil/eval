@@ -18,6 +18,8 @@ class ContentsController extends AppController {
 
 	function add() {
 		if (!empty($this->data)) {
+			//pr($this->data);exit;
+			
 			$this->Content->create();
 			if ($this->Content->save($this->data)) {
 				$this->Session->setFlash(__('The content has been saved', true));
@@ -58,4 +60,5 @@ class ContentsController extends AppController {
 		$this->Session->setFlash(__('Content was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
 }

@@ -55,7 +55,6 @@
 		echo $this->Html->script('plugins/bootstrap');
 		echo $this->Html->script('plugins/summernote');
 		echo $this->Html->script('home');
-		echo $this->Html->script('example');
 
 		echo $scripts_for_layout;
 	?>
