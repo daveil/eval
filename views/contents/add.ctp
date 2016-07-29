@@ -33,4 +33,4 @@ form div {
 		<li><?php echo $this->Html->link(__('List Contents', true), array('action' => 'index'));?></li>
 	</ul>
 </div>
-<?php echo $this->Html->script('summernote/contents',array('inline'=>false));?>
+<?php echo $this->Html->script('contents',array('inline'=>false));?>
