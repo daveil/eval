@@ -31,12 +31,39 @@
  * @subpackage    cake.app
  */
 class AppController extends Controller {
+	public $components = array(
+        'Auth' => array(
+            'loginRedirect' => array(
+                'controller' => '',
+                'action' => 'home'
+            ),
+            'logoutRedirect' => array(
+                'controller' => '',
+                'action' => 'home'
+            ),
+			'authorize '=>'controller'
+        ), 
+        'Session',
+		'RequestHandler',
+    );
+	
+	public $loggedIn = false;
+	
 	function beforeFilter(){
+		if ($this->params['controller'] == 'pages') {
+			$this->Auth->allow('*'); 
+		}
+		
+		$user = $this->Auth->user();
+		$this->set('user', $user);
+
+		
 		App::Import('Model','Teacher');
 		$this->Teacher = new Teacher;
 		$this->Teacher->recursive=0;
 		$Teachers =  $this->Teacher->find('all');
 		$this->set(compact('Teachers'));
 		return parent::beforeFilter();
+		
 	}
 }
