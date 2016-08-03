@@ -1,3 +1,9 @@
+<?php
+	echo $this->Html->css('plugins/bootstrap');
+	echo $this->Html->css('plugins/summernote');
+	echo $this->Html->script('plugins/bootstrap',array('inline'=>false));
+	echo $this->Html->script('plugins/summernote',array('inline'=>false));
+?>
 <style>
 form div {
     clear: none;
@@ -9,7 +15,6 @@ form div {
 	width: 98%;
 }
 </style>
-
 <div class="contents form">
 <?php echo $this->Form->create('Content');?>
 	<fieldset>
