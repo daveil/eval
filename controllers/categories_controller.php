@@ -8,17 +8,20 @@ class CategoriesController extends AppController {
 		$this->set('categories', $this->paginate());
 	}
 
-	function view($id = null) {
-		if (!$id) {
+	function view($slug = null) {
+		if (!$slug) {
 			$this->Session->setFlash(__('Invalid category', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('category', $this->Category->read(null, $id));
+		$this->set('category', $this->Category->findBySlug($slug));
 	}
 
 	function add() {
 		if (!empty($this->data)) {
 			$this->Category->create();
+			$string = str_replace(' ', '-', strtolower(trim($d['Category']['name']))); 
+			$this->data['Category']['slug'] = preg_replace('/[^A-Za-z0-9\-]/', '-', $string);
+			
 			if ($this->Category->save($this->data)) {
 				$this->Session->setFlash(__('The category has been saved', true));
 				$this->redirect(array('action' => 'index'));
@@ -28,8 +31,11 @@ class CategoriesController extends AppController {
 		}
 	}
 
-	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+	function edit($slug = null) {
+		if (!$slug && empty($this->data)) {
+			$string = str_replace(' ', '-', strtolower(trim($d['Category']['name']))); 
+			$this->data['Category']['slug'] = preg_replace('/[^A-Za-z0-9\-]/', '-', $string);
+			
 			$this->Session->setFlash(__('Invalid category', true));
 			$this->redirect(array('action' => 'index'));
 		}
@@ -42,7 +48,7 @@ class CategoriesController extends AppController {
 			}
 		}
 		if (empty($this->data)) {
-			$this->data = $this->Category->read(null, $id);
+			$this->data = $this->Category->findBySlug($slug);;
 		}
 	}
 
@@ -57,5 +63,26 @@ class CategoriesController extends AppController {
 		}
 		$this->Session->setFlash(__('Category was not deleted', true));
 		$this->redirect(array('action' => 'index'));
+	}
+	
+	function create_slug(){
+
+		
+		$questions = $this->Category->find('all');
+		
+		foreach($questions as $k=>$d){
+			$data['Category'][$k]['id'] = $d['Category']['id'];
+			$string = str_replace(' ', '-', strtolower(trim($d['Category']['name']))); 
+			$data['Category'][$k]['slug'] = preg_replace('/[^A-Za-z0-9\-]/', '-', $string);
+		}
+	
+		if ($this->Category->saveAll($data['Category'])) {
+			echo 'Category slug has been updated';
+			exit;
+		} else {
+			echo 'Category slug could not be saved. Please, try again.';
+			exit;
+		}
+		
 	}
 }

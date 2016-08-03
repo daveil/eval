@@ -26,18 +26,35 @@ class EvaluationsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Evaluation->create();
 			if ($this->Evaluation->saveAll($this->data)) {
+				pr($this->data);exit;
+				
 				$this->Session->setFlash(__('Successfully Submitted', true));
 				$this->redirect(array('action' => 'success'));
 			} else {
 				$this->Session->setFlash(__('The evaluation could not be saved. Please, try again.', true));
 			}
 		}
+		
+		//CHECK IF TEACHER ALREADY EVALUATED
+		if(isset($this->params['named']['teacher_id']) && isset($this->params['named']['student_id'])){
+			
+			$result = $this->Evaluation->find('all',array('conditions'=>array(
+												'Evaluation.teacher_id'=>$this->params['named']['teacher_id'],
+												'Evaluation.student_id'=>$this->params['named']['student_id']
+											)));
+			if($result){
+				$this->Session->setFlash(__('Oops! Teacher already evaluated.', true));
+				$this->redirect(array('controller'=>'pages','action' => '/'));
+			}
+		}
+		
 		if(isset($this->params['named']['teacher_id'])){
 			$teacher_id = $this->params['named']['teacher_id'];
 			$teacher = $this->Evaluation->Teacher->findById($teacher_id);
 			$teacher_name = $teacher['Teacher']['full_name'];
 			$this->set(compact('teacher_id', 'teacher','teacher_name'));
 		}
+		
 		$students = $this->Evaluation->Student->find('list');
 		$teachers = $this->Evaluation->Teacher->find('list');
 		$categories = $this->Category->find('all');
@@ -54,7 +71,7 @@ class EvaluationsController extends AppController {
 			array_push($group_questions[$cat_id],$question);
 		}
 			
-		$student_id = 1;
+		$student_id = $this->params['named']['student_id'];
 		$this->set(compact('students', 'teachers','categories','group_questions','student_id'));
 	}
 

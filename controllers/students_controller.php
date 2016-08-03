@@ -8,16 +8,17 @@ class StudentsController extends AppController {
 		$this->set('students', $this->paginate());
 	}
 
-	function view($id = null) {
-		if (!$id) {
+	function view($slug = null) {
+		if (!$slug) {
 			$this->Session->setFlash(__('Invalid student', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('student', $this->Student->read(null, $id));
+		$this->set('student', $this->Student->findBySlug($slug));
 	}
 
 	function add() {
 		if (!empty($this->data)) {
+			
 			$this->Student->create();
 			if ($this->Student->save($this->data)) {
 				$this->Session->setFlash(__('The student has been saved', true));
@@ -28,12 +29,13 @@ class StudentsController extends AppController {
 		}
 	}
 
-	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+	function edit($slug = null) {
+		if (!$slug && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid student', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			
 			if ($this->Student->save($this->data)) {
 				$this->Session->setFlash(__('The student has been saved', true));
 				$this->redirect(array('action' => 'index'));
@@ -42,7 +44,7 @@ class StudentsController extends AppController {
 			}
 		}
 		if (empty($this->data)) {
-			$this->data = $this->Student->read(null, $id);
+			$this->data = $this->Student->findBySlug($slug);
 		}
 	}
 
@@ -57,5 +59,24 @@ class StudentsController extends AppController {
 		}
 		$this->Session->setFlash(__('Student was not deleted', true));
 		$this->redirect(array('action' => 'index'));
+	}
+	
+	function create_slug(){
+		
+		$students = $this->Student->find('all');
+		
+		foreach($students as $k=>$d){
+			$data['Student'][$k]['id'] = $d['Student']['id'];
+			$string = str_replace(' ', '-', strtolower(trim($d['Student']['full_name']))); 
+			$data['Student'][$k]['slug'] = preg_replace('/[^A-Za-z0-9\-]/', '-', $string);
+		}
+	
+		if ($this->Student->saveAll($data['Student'])) {
+			echo 'Student slug has been updated';
+			exit;
+		} else {
+			echo 'Student slug could not be saved. Please, try again.';
+			exit;
+		}
 	}
 }
