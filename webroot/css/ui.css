@@ -11,7 +11,7 @@
 .align-left{
 	text-align:left;
 }
-/* Menu Navigation */
+/* Menu Navigation
 #content{
 	position:relative;
 }
@@ -42,6 +42,8 @@ div.actions ul>li>ul{
 div.actions ul>li>ul.active{
 	display:inline-block;
 }
+
+
 #faculty{
 	width:inherit;
 }
@@ -107,3 +109,15 @@ div.three-columns>div.column>*{width:100%;}
 	margin-top:80px !important;
 	margin-bottom: -50px;
 }
+
+.error{
+	color:red;
+}
+
+.navs{
+    float: right;
+    padding-right: 20px;
+    padding-top: 15px;
+}
+
+
