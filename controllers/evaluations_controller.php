@@ -2,7 +2,8 @@
 class EvaluationsController extends AppController {
 
 	var $name = 'Evaluations';
-	var $uses = array('Evaluation','Category');
+	var $uses = array('Evaluation','Category','LetterGrade');
+	
 	function index() {
 		if (!empty($this->data)) {
 			$this->Evaluation->recursive =2;
@@ -24,9 +25,20 @@ class EvaluationsController extends AppController {
 
 	function add() {
 		if (!empty($this->data)) {
+				
+			foreach($this->data['EvaluationResult'] as $key => $result){
+				if(empty($result['score'])){
+					$score = 0;
+				}else{
+					$score = $result['score'];
+				}
+				$letterGrade = $this->LetterGrade->getLetterEquivalent($score);
+				$this->data['EvaluationResult'][$key]['equivalent'] = $letterGrade[0]['letter_grades']['equivalent'];
+				
+			}	
+			//pr($this->data['EvaluationResult']);exit;
 			$this->Evaluation->create();
 			if ($this->Evaluation->saveAll($this->data)) {
-				pr($this->data);exit;
 				
 				$this->Session->setFlash(__('Successfully Submitted', true));
 				$this->redirect(array('action' => 'success'));
