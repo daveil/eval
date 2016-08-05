@@ -1,22 +1,24 @@
+<?php
 Please follow instructions:
 
-1. Return original getAverageResult query. line 53 - 73  commented.
-2. Create a letter_grades table with columns
+//1. Return original getAverageResult query. line 53 - 73  commented.
+//2. Create a letter_grades table with columns
 		id   min_grade    max_grade    equivalent
-3. Init letter_grades MVC.
-4. Inside the letter_grade model create:
+//3. Init letter_grades MVC.
+//4. Inside the letter_grade model create:
 	function getLetterEquivalent($score){
 		//Query from table
 		return $equivalent;
 	}
-5. Add column equivalent on evaluations table	
-6. Inside evaluations add function before saving,
+//5. Add column equivalent on evaluations table	
+//6. Inside evaluations add function before saving,
 	loop on the data to get Evaluation.score and
 	EvaluationResults[index][score]. 
 	Use the LetterGrade->getLetterEquivalent and set equivalent field
 	accordingly to save both the Evaluation total score equivalent as
 	well as the EvalResult score per category.
-7. Inside evaluations index function add
+	
+//7. Inside evaluations index function add
 	results[0]['0']['average_letter'] =  $this->LetterGrade->getLetterEquivalent(results[0]['0']['average_result']);
 	Display average_letter along with the average_result 
 	inside evaluations/index.ctp line 48

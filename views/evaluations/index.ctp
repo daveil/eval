@@ -34,7 +34,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Gender'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $teacher['gender']; ?>
+			<?php echo strtoupper($teacher['gender']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -65,7 +65,7 @@
 				<tr<?php echo $class;?>>
 					<td><?php echo $evaluationResult['Category']['name'];?></td>
 					<td><?php echo $evaluationResult['0']['average_result'];?></td>
-					<td><center><?php echo $evaluationResult['0']['letter_grade'];?></center></td>
+					<td><center><?php echo $evaluationResult['evaluation_results']['equivalent'];?></center></td>
 				</tr>
 			<?php endforeach;?>
 			<?php else: ?>
@@ -80,7 +80,7 @@
 	
 	</div>
 		
-	<div class="column" style="float:left">
+	<div class="column" style="float:left; dsplay:none">
 		<table >
 			<caption><h3>Letter Grade Equivalent</h3></caption>
 			<thead>
