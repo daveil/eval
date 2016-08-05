@@ -9,11 +9,10 @@ class LetterGrade extends AppModel {
 				*
 				FROM
 				  letter_grades 
-				WHERE max_grade >= $score
-				ORDER BY id DESC
-				LIMIT 1
-
-		";
+				WHERE 
+					min_grade >= $score
+				AND	max_grade <= $score
+			";
 		
 		return $this->query($query);
 	}
