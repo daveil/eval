@@ -42,39 +42,74 @@
 	</div>
 	<div id="Results" class="column">
 		<h3>Results</h3>
-		<?php 
-		if (!empty($results[0])):?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php __('Category'); ?></th>
-		<th><?php __('Score'); ?></th>
-	</tr>
-	<?php
-		$i = 0;
-		if (!empty($results[0]['Category']['name'])):
-		foreach ($results as $evaluationResult):
-			$class = null;
-			if ($i++ % 2 == 0) {
-				$class = ' class="altrow"';
-			}
-		?>
-		<tr<?php echo $class;?>>
-			<td><?php echo $evaluationResult['Category']['name'];?></td>
-			<td><?php echo $evaluationResult['0']['average_result'];?></td>
-		</tr>
-	<?php endforeach;?>
-	<?php else: ?>
-		<tr<?php echo $class;?>>
-			<td colspan="2">No Evaluation Yet</td>
-		</tr>
+		<?php if (!empty($results[0])):?>
+		<table cellpadding = "0" cellspacing = "0">
+			<tr>
+				<th><?php __('Category'); ?></th>
+				<th><?php __('Score'); ?></th>
+				<th><center><?php __('Letter Grade'); ?></center></th>
+			</tr>
+			<?php
+				$i = 0;
+				if (!empty($results[0]['Category']['name'])):
+				foreach ($results as $evaluationResult):
+					$class = null;
+					if ($i++ % 2 == 0) {
+						$class = ' class="altrow"';
+					}
+				?>
+				<tr<?php echo $class;?>>
+					<td><?php echo $evaluationResult['Category']['name'];?></td>
+					<td><?php echo $evaluationResult['0']['average_result'];?></td>
+					<td><center><?php echo $evaluationResult['0']['letter_grade'];?></center></td>
+				</tr>
+			<?php endforeach;?>
+			<?php else: ?>
+				<tr<?php echo $class;?>>
+					<td colspan="2">No Evaluation Yet</td>
+				</tr>
+		
+		<?php endif;?>
+		
+		</table>
+		<?php endif; ?>
+	
+	</div>
+		
+	<div class="column" style="float:left">
+		<table >
+			<caption><h3>Letter Grade Equivalent</h3></caption>
+			<thead>
+				<th>Letter Grade</th>
+				<th>Equivalent Score</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>O - Outstanding</td>
+					<td>8.60 - 10.00 </td>
+				</tr>
+				<tr>
+					<td>VS - Very Satisfactory</td>
+					<td>6.60 - 8.59</td>
+				</tr>
+				<tr>
+					<td>S - Satisfactory</td>
+					<td>4.60 - 6.59</td>
+				</tr>
+				<tr>
+					<td>U - Unsatisfactory</td>
+					<td>2.60 - 4.59</td>
+				</tr>
+				<tr>
+					<td>P - Poor</td>
+					<td>2.59 & below</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
 	
 	<?php endif;?>
-	
-	</table>
-<?php endif; ?>
-
-	</div>
-	<?php
-	endif;
-	?>
 </div>
+	
+
