@@ -49,7 +49,6 @@ class Evaluation extends AppModel {
 		)
 	);
 	function getAverageResult($teacher_id){
-		/*
 		$query = "	
 					SELECT
 						`Teacher`.`last_name`
@@ -59,6 +58,7 @@ class Evaluation extends AppModel {
 						,ROUND( AVG(`evaluations`.`score`),2) AS average_score
 						, ROUND(AVG(`evaluation_results`.`score`),2) AS average_result
 						, Category.name
+						, `evaluation_results`.equivalent
 					FROM
 					   `teachers` as Teacher
 						LEFT JOIN `evaluations` 
@@ -70,42 +70,6 @@ class Evaluation extends AppModel {
 					WHERE `Teacher`.id = $teacher_id
 					GROUP BY  evaluation_results.category_id
 				";
-		*/
-		
-		$query =  "
-			SELECT 
-			  `Teacher`.`last_name`,
-			  `Teacher`.`first_name`,
-			  `Teacher`.`middle_name`,
-			  `Teacher`.`gender`,
-			  ROUND(AVG(`evaluations`.`score`), 2) AS average_score,
-			  ROUND(AVG(`evaluation_results`.`score`),2) AS average_result,
-			  CASE
-				WHEN   ROUND(AVG(`evaluation_results`.`score`),2)  >= 8.6 THEN 'O'
-				WHEN   ROUND(AVG(`evaluation_results`.`score`),2)  >= 6.6 AND ROUND(AVG(`evaluation_results`.`score`),2)  <=  8.59 THEN 'VS'
-				WHEN   ROUND(AVG(`evaluation_results`.`score`),2) >= 4.6 AND ROUND(AVG(`evaluation_results`.`score`),2)  <= 6.59 THEN 'S'
-				WHEN   ROUND(AVG(`evaluation_results`.`score`),2) >= 2.6 AND ROUND(AVG(`evaluation_results`.`score`),2)  <= 4.59 THEN 'U'
-				ELSE 'P'
-			  END AS letter_grade,
-			  Category.name 
-			FROM
-			  `teachers` AS Teacher 
-			  LEFT JOIN `evaluations` 
-				ON (
-				  `Teacher`.`id` = `evaluations`.`teacher_id`
-				) 
-			  LEFT JOIN `evaluation_results` 
-				ON (
-				  `evaluations`.`id` = `evaluation_results`.`evaluation_id`
-				) 
-			  LEFT JOIN `categories` AS Category 
-				ON (
-				  `evaluation_results`.`category_id` = `Category`.`id`
-				) 
-			WHERE `Teacher`.id = 3 
-			GROUP BY evaluations.`teacher_id`,
-			  evaluation_results.category_id 
-		";
 		
 		return $this->query($query);
 	}
