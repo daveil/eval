@@ -11,7 +11,7 @@
 .align-left{
 	text-align:left;
 }
-/* Menu Navigation
+/* Menu Navigation */
 #content{
 	position:relative;
 }
@@ -45,12 +45,14 @@ div.actions ul>li>ul.active{
 }
 
 
-#faculty{
+#faculty, #User, #Misc{
 	width:inherit;
 }
-#faculty li{
+#faculty li, #User li, #Misc li{
 	display:inline;
 }
+
+
 /** Evaluation Questions */
 div.question{float:left;width:60%;display:inline-block;}
 div.choices{float:right;width:40%;display:inline-block;}
@@ -113,11 +115,10 @@ div.three-columns>div.column>*{width:100%;}
 .error{
 	color:red;
 }
-
+/*
 .navs{
     float: right;
     padding-right: 20px;
     padding-top: 15px;
 }
-
-
+*/
