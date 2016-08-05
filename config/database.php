@@ -5,7 +5,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'mysql.hostinger.ph',
 		'login' => 'u948978129_eval',
-		'password' => 'Ch0wK1ing',
+		'password' => 'j3j3m00n',
 		'database' => 'u948978129_eval',
 	);
 	
