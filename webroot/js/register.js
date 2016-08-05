@@ -5,7 +5,7 @@ $(document).ready(function(){
 	$('#UserUsername').on('change',function(){
 		var username = $(this).val();
 		$.ajax({
-			url:BASE_URL+'users/check',
+			url:BASE_URL+'/users/check',
 			dataType:'json',
 			data:{'data':{'User':{'username':username}}},
 			type:'post',
