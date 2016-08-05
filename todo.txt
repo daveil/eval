@@ -22,7 +22,7 @@ Please follow instructions:
 	results[0]['0']['average_letter'] =  $this->LetterGrade->getLetterEquivalent(results[0]['0']['average_result']);
 	Display average_letter along with the average_result 
 	inside evaluations/index.ctp line 48
-8. Menu should be left justified. Return Evaluations dropdown for teachers name.
+//8. Menu should be left justified. Return Evaluations dropdown for teachers name.
 	Return yellow green box for the links.
 
 
