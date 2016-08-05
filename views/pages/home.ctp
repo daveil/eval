@@ -23,10 +23,7 @@
 	<?php if($user['User']['is_admin'] == 1):?>
 		<div class="actions">
 			<ul>
-				<li><?php echo $this->Html->link(__('Profile', true), array('controller' => 'students', 'action' => 'add')); ?> </li>
 				<li><?php echo $this->Html->link(__('Result', true), array('controller' => 'evaluations', 'action' => 'index')); ?> </li>
-			
-				
 				
 				<li>
 					<a href="#Misc" class="dropdown-toggle">Basic 201</a>
@@ -41,7 +38,7 @@
 				</li>
 				<li><?php echo $this->Html->link(__('About Us', true), array('controller' => 'pages', 'action' => 'about-us')); ?> </li>
 				<li>
-					<a href="#User" class="dropdown-toggle">My Account</a>
+					<a href="#User" class="dropdown-toggle">Profile</a>
 					<ul id="User">
 						<li><?php echo $this->Html->link(__('Setting', true), array('controller' => 'users', 'action' => 'account_setting')); ?></li>
 						<li><?php echo $this->Html->link(__('Logout', true), array('controller' => 'users', 'action' => 'logout')); ?> </li>
@@ -54,7 +51,6 @@
 	<?php else:?>
 		<div class="actions">
 			<ul>
-				<li><?php echo $this->Html->link(__('Profile', true), array('controller' => 'students', 'action' => 'add')); ?> </li>
 				<li>
 					<a href="#faculty" class="dropdown-toggle">Faculty Evaluation</a>
 					<ul id="faculty">
@@ -72,7 +68,7 @@
 				</li>
 				<li><?php echo $this->Html->link(__('About Us', true), array('controller' => 'pages', 'action' => 'about-us')); ?> </li>
 				<li>
-					<a href="#User" class="dropdown-toggle">My Account</a>
+					<a href="#User" class="dropdown-toggle">Profile</a>
 					<ul id="User">
 						<li><?php echo $this->Html->link(__('Setting', true), array('controller' => 'users', 'action' => 'account_setting')); ?></li>
 						<li><?php echo $this->Html->link(__('Logout', true), array('controller' => 'users', 'action' => 'logout')); ?> </li>
