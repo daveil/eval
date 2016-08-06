@@ -1,7 +1,7 @@
 <div class="teachers form">
 <?php echo $this->Form->create('Teacher');?>
 	<fieldset>
-		<legend><?php __('Add Teacher'); ?></legend>
+		<legend><?php __('Add Faculty'); ?></legend>
 	<?php
 		echo $this->Form->input('last_name');
 		echo $this->Form->input('first_name');

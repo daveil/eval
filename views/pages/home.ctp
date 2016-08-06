@@ -23,6 +23,40 @@
 	<?php if($user['User']['is_admin'] == 1):?>
 		<div class="actions">
 			<ul>
+				<li>
+					<?php echo $this->Html->link(__('Faculty', true), 
+								array(
+										'controller' => 'teachers', 
+										'action' => 'index'
+									)); ?>
+				</li>
+				<li>
+					<?php echo $this->Html->link(__('Questionnaire', true), 
+								array(
+										'controller' => 'questions', 
+										'action' => 'index'
+									)); ?>
+				</li>
+				<li>
+					<?php echo $this->Html->link(__('Evaluation Result', true), 
+								array(
+										'controller' => 'evaluations', 
+										'action' => 'index'
+									)); ?>
+				</li>
+				<li>
+					<?php echo $this->Html->link(__('Logout', true), 
+								array(
+										'controller' => 'users', 
+										'action' => 'logout'
+									)); ?>
+				</li>
+				
+			
+		
+			</ul> 
+		<!--	
+			<ul>
 				<li><?php echo $this->Html->link(__('Result', true), array('controller' => 'evaluations', 'action' => 'index')); ?> </li>
 				
 				<li>
@@ -47,9 +81,46 @@
 				</li>
 					
 			</ul>
+		-->
 		</div>
 	<?php else:?>
 		<div class="actions">
+			<ul>
+				<li>
+					<?php echo $this->Html->link(__('Profile', true), 
+								array(
+										'controller' => 'users', 
+										'action' => 'account_setting'
+									)); ?>
+				</li>
+				<li>
+					<a href="#faculty" class="dropdown-toggle">Faculty Evaluation</a>
+					<ul id="faculty">
+						<?php 
+							foreach($Teachers as $teacher):
+								$id =  $teacher['Teacher']['id'];
+								$name =  $teacher['Teacher']['full_name'];
+						?>
+						<li>
+							<?php echo $this->Html->link(__($name, true), array('controller' => 'evaluations', 'action' => 'add','teacher_id'=>$id,'student_id'=>$user['User']['id'])); ?>
+					
+						</li>
+						<?php endforeach;?>
+				
+					</ul>
+				</li>
+				<li>
+					<?php echo $this->Html->link(__('Result', true), 
+								array(
+										'controller' => 'evaluations', 
+										'action' => 'index'
+									)); ?>
+				</li>
+				<li>
+					<?php echo $this->Html->link(__('About Us', true), array('controller' => 'pages', 'action' => 'about-us')); ?>
+				</li>
+			</ul>
+		<!--	
 			<ul>
 				<li>
 					<a href="#faculty" class="dropdown-toggle">Faculty Evaluation</a>
@@ -66,7 +137,9 @@
 						<?php endforeach;?>
 					</ul>
 				</li>
-				<li><?php echo $this->Html->link(__('About Us', true), array('controller' => 'pages', 'action' => 'about-us')); ?> </li>
+				<li>
+					<?php echo $this->Html->link(__('About Us', true), array('controller' => 'pages', 'action' => 'about-us')); ?>
+				</li>
 				<li>
 					<a href="#User" class="dropdown-toggle">Profile</a>
 					<ul id="User">
@@ -76,6 +149,7 @@
 					</ul>
 				</li>
 			</ul>
+		-->
 		</div>
 
 	<?php endif;?>

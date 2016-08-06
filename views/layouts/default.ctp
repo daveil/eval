@@ -34,7 +34,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link(__('Evaluation System', true), '/'); ?></h1>
+			<h1><?php echo $this->Html->link(__('Eval System', true), '/'); ?></h1>
 		</div>
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>
