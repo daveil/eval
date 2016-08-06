@@ -108,6 +108,7 @@
 						<?php endforeach;?>
 				
 					</ul>
+					
 				</li>
 				<li>
 					<?php echo $this->Html->link(__('Result', true), 
@@ -118,6 +119,9 @@
 				</li>
 				<li>
 					<?php echo $this->Html->link(__('About Us', true), array('controller' => 'pages', 'action' => 'about-us')); ?>
+				</li>
+				<li> 
+				<?php echo $this->Html->link(__('Logout', true), array('controller' => 'users', 'action' => 'logout')); ?> 
 				</li>
 			</ul>
 		<!--	
