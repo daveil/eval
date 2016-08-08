@@ -10,8 +10,8 @@ class LetterGrade extends AppModel {
 				FROM
 				  letter_grades 
 				WHERE 
-					min_grade >= $score
-				AND	max_grade <= $score
+					min_grade <=  $score
+				AND	max_grade >= $score
 			";
 		
 		return $this->query($query);
