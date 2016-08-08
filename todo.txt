@@ -11,7 +11,7 @@ Please follow instructions:
 [x] 3. Add is_master checkbox on teachers/index
     Change gender inputbox to radio button Male / Female
 	Should be able to add / edit after changes
-[] 4. Revise code for line 75 - 76  on evaluations add function
+[x] 4. Revise code for line 75 - 76  on evaluations add function
     Filter  category based on current teacher is_master value. 
 	Filter questions based on filtered category.
 [x] 5. NEW: Add student gender on table, register and  edit profile
