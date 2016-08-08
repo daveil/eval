@@ -9,18 +9,19 @@ class EvaluationsController extends AppController {
 			$this->Evaluation->recursive =2;
 			$evaluation = $this->Evaluation->findByTeacherId($this->data['Evaluation']['teacher_id']);
 			$results = $this->Evaluation->getAverageResult($this->data['Evaluation']['teacher_id']);
-			//pr($results);exit;
-		
-			foreach($results as $k => $r){
-				$results[$k]['0']['letter_score'] = $this->LetterGrade->getLetterEquivalent($results[$k]['0']['average_score']);
-				$results[$k]['0']['letter_result'] = $this->LetterGrade->getLetterEquivalent($results[$k]['0']['average_result']);	
+			if(!empty($evaluation)){
+				foreach($results as $k => $r){
+					$results[$k]['0']['letter_score'] = $this->LetterGrade->getLetterEquivalent($results[$k]['0']['average_score']);
+					$perCatPercentage = ($results[$k]['0']['average_result']/($results[$k]['Category']['precentage']/10))*10;
+					$results[$k]['0']['letter_result'] = $this->LetterGrade->getLetterEquivalent($perCatPercentage);	
+					
+					//pr($results[$k]['0']['average_result'].'/'.($results[$k]['Category']['precentage']/10).'='.($results[$k]['0']['average_result']/($results[$k]['Category']['precentage']/10))*10);
+					
+				}
+				//pr($results);exit;
+				
+				$this->set(compact('evaluation','results'));
 			}
-			//pr($results);exit;
-			
-			$this->set(compact('evaluation','results'));
-			
-			
-			
 		}
 		$teachers = $this->Evaluation->Teacher->find('list');
 		$this->set(compact('teachers'));
@@ -36,6 +37,7 @@ class EvaluationsController extends AppController {
 
 	function add() {
 		if (!empty($this->data)) {
+			/* TINANGGAL KO NA TO, DI DIN NAMAN NAGAGAMIT, AT DI DIN NAMAN NAGSASAVE SA EVALUATION RESULT YUN EQUIVALENT AFTER NG ISANG ROW
 			foreach($this->data['EvaluationResult'] as $key => $result){
 				if(empty($result['score'])){
 					$score = 0;
@@ -45,11 +47,10 @@ class EvaluationsController extends AppController {
 				$letterGrade = $this->LetterGrade->getLetterEquivalent($score);
 				$this->data['EvaluationResult'][$key]['equivalent'] = $letterGrade['LetterGrade']['equivalent'];
 			}
-			$evalScore = $this->data['Evaluation']['score'];
-			$evalLetterGrade = $this->LetterGrade->getLetterEquivalent($evalScore);
+			$evalLetterGrade = $this->LetterGrade->getLetterEquivalent($this->data['Evaluation']['score']);
 			$this->data['Evaluation']['equivalent'] = $evalLetterGrade['LetterGrade']['equivalent'];
-			
-			//pr($this->data['EvaluationResult']);exit;
+			pr($this->data);exit;
+			*/
 			$this->Evaluation->create();
 			if ($this->Evaluation->saveAll($this->data)) {
 				

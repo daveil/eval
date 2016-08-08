@@ -1,5 +1,18 @@
 <style type="text/css">
 .page{display:none;}
+.w8{
+	width:8%;
+	text-align:center;
+}
+.w8 input{
+	float:none;
+}
+.pt10{
+	padding-top: 10px;
+}
+.mt5{
+	margin-top: 5px !important;
+}
 </style>
 <?php echo $this->Html->script('evaluation',array('inline'=>false)); ?>
 <div class="evaluations form">
@@ -27,7 +40,7 @@
 		<fieldset class="page page-<?php echo $page; ?>">
 			<legend><?php echo $title;?></legend>
 			<?php if(count($group_questions[$cat_id])):?>
-			
+				<!--
 				<div class="choices">
 					<span>10</span>
 					<span>8</span>
@@ -37,6 +50,7 @@
 					<span>Score</span>
 				</div>
 				<div class="clearfix"></div>
+				
 				<ol>
 					<?php foreach($group_questions[$cat_id] as $question):
 							$que_id = $question['Question']['id'];
@@ -60,6 +74,43 @@
 						endforeach;
 					?>
 				</ol>
+				-->
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th class="w8">10</th>
+							<th class="w8">8</th>
+							<th class="w8">6</th>
+							<th class="w8">4</th>
+							<th class="w8">2</th>
+							<th class="w8">Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $ctr = 1;?>
+						<?php foreach($group_questions[$cat_id] as $question):
+							$que_id = $question['Question']['id'];
+						?>	
+								
+						<tr>
+							<td class="pt10"><?php echo $ctr++ .'. '.$question['Question']['question'];?></td>
+							<td class="w8 choices"><input class="mt5" type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="10" /></td>
+							<td class="w8 choices"><input class="mt5" type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="8" /></td>
+							<td class="w8 choices"><input class="mt5" type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="6" /></td>
+							<td class="w8 choices"><input class="mt5" type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="4" /></td>
+							<td class="w8 choices"><input class="mt5" type="radio" name="EvaluationChoices<?php echo $que_id;?>" value="2" /></td>
+							<td class="w8 choices">
+								<input class="per-item-score" type="text" id="EvaluationScore<?php echo $que_id;?>" name="data[EvaluationDetail][<?php echo $dtl_indx;?>][score]" readonly="readonly" />
+								<input type="hidden" name="data[EvaluationDetail][<?php echo $dtl_indx;?>][question_id]" value="<?php echo $que_id;?>" />
+							</td>
+						</tr>
+						<?php
+							$dtl_indx++;
+							endforeach;
+						?>
+					</tbody>
+				</table>
 			<?php endif;?>
 			<div class="total pull-right" style="width:60px;padding-right:25px;">
 				<label for="">Total</label>

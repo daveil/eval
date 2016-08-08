@@ -58,6 +58,7 @@ class Evaluation extends AppModel {
 						, ROUND( AVG(`evaluations`.`score`),2) AS average_score
 						, ROUND(AVG(`evaluation_results`.`score`),2) AS average_result
 						, Category.name
+						, Category.precentage
 					FROM
 					   `teachers` as Teacher
 						LEFT JOIN `evaluations` 
