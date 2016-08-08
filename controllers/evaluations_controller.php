@@ -25,7 +25,6 @@ class EvaluationsController extends AppController {
 
 	function add() {
 		if (!empty($this->data)) {
-				
 			foreach($this->data['EvaluationResult'] as $key => $result){
 				if(empty($result['score'])){
 					$score = 0;
@@ -70,16 +69,23 @@ class EvaluationsController extends AppController {
 			$this->set(compact('teacher_id', 'teacher','teacher_name'));
 		}
 		
+		
 		$students = $this->Evaluation->Student->find('list');
 		$teachers = $this->Evaluation->Teacher->find('list');
-		$categories = $this->Category->find('all');
-		$questions = $this->Category->Question->find('all');
+		$categories = $this->Category->find('all',array('conditions'=>array('Category.for_masters'=>$teacher['Teacher']['is_master'])));
 		$group_questions = array();
+		$category_ids = array();
+
+		
 		//Initialize group_questions[category] 
 		foreach($categories as $category){
 			$cat_id =  $category['Category']['id'];
 			$group_questions[$cat_id] = array();
+			array_push($category_ids,$cat_id);
 		}
+		
+		$questions = $this->Category->Question->find('all',array('conditions'=>array('Question.category_id'=>$category_ids)));
+		
 		//Push questions to group_questions[category]
 		foreach($questions as $question){
 			$cat_id =  $question['Question']['category_id'];
