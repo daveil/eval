@@ -33,11 +33,11 @@ class EvaluationsController extends AppController {
 					$score = $result['score'];
 				}
 				$letterGrade = $this->LetterGrade->getLetterEquivalent($score);
-				$this->data['EvaluationResult'][$key]['equivalent'] = $letterGrade[0]['letter_grades']['equivalent'];
+				$this->data['EvaluationResult'][$key]['equivalent'] = $letterGrade['LetterGrade']['equivalent'];
 			}
 			$evalScore = $this->data['Evaluation']['score'];
 			$evalLetterGrade = $this->LetterGrade->getLetterEquivalent($evalScore);
-			$this->data['Evaluation']['equivalent'] = $evalLetterGrade;
+			$this->data['Evaluation']['equivalent'] = $evalLetterGrade['LetterGrade']['equivalent'];
 			
 			//pr($this->data['EvaluationResult']);exit;
 			$this->Evaluation->create();
