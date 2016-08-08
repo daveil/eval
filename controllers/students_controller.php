@@ -8,17 +8,16 @@ class StudentsController extends AppController {
 		$this->set('students', $this->paginate());
 	}
 
-	function view($slug = null) {
-		if (!$slug) {
+	function view($id = null) {
+		if (!$id) {
 			$this->Session->setFlash(__('Invalid student', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('student', $this->Student->findBySlug($slug));
+		$this->set('student', $this->Student->findById($id));
 	}
 
 	function add() {
 		if (!empty($this->data)) {
-			
 			$this->Student->create();
 			if ($this->Student->save($this->data)) {
 				$this->Session->setFlash(__('The student has been saved', true));
@@ -29,8 +28,8 @@ class StudentsController extends AppController {
 		}
 	}
 
-	function edit($slug = null) {
-		if (!$slug && empty($this->data)) {
+	function edit($id = null) {
+		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid student', true));
 			$this->redirect(array('action' => 'index'));
 		}
@@ -44,7 +43,7 @@ class StudentsController extends AppController {
 			}
 		}
 		if (empty($this->data)) {
-			$this->data = $this->Student->findBySlug($slug);
+			$this->data = $this->Student->findById($id);
 		}
 	}
 
