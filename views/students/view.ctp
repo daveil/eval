@@ -51,7 +51,7 @@
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Student', true), array('action' => 'edit', $student['Student']['slug'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Student', true), array('action' => 'edit', $student['Student']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('Delete Student', true), array('action' => 'delete', $student['Student']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $student['Student']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Students', true), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Student', true), array('action' => 'add')); ?> </li>
