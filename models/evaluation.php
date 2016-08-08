@@ -49,16 +49,15 @@ class Evaluation extends AppModel {
 		)
 	);
 	function getAverageResult($teacher_id){
-		$query = "	
+		$query = "
 					SELECT
 						`Teacher`.`last_name`
 						, `Teacher`.`first_name`
 						, `Teacher`.`middle_name`
 						, `Teacher`.`gender`
-						,ROUND( AVG(`evaluations`.`score`),2) AS average_score
+						, ROUND( AVG(`evaluations`.`score`),2) AS average_score
 						, ROUND(AVG(`evaluation_results`.`score`),2) AS average_result
 						, Category.name
-						, `evaluation_results`.equivalent
 					FROM
 					   `teachers` as Teacher
 						LEFT JOIN `evaluations` 

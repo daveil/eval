@@ -9,7 +9,18 @@ class EvaluationsController extends AppController {
 			$this->Evaluation->recursive =2;
 			$evaluation = $this->Evaluation->findByTeacherId($this->data['Evaluation']['teacher_id']);
 			$results = $this->Evaluation->getAverageResult($this->data['Evaluation']['teacher_id']);
+			//pr($results);exit;
+		
+			foreach($results as $k => $r){
+				$results[$k]['0']['letter_score'] = $this->LetterGrade->getLetterEquivalent($results[$k]['0']['average_score']);
+				$results[$k]['0']['letter_result'] = $this->LetterGrade->getLetterEquivalent($results[$k]['0']['average_result']);	
+			}
+			//pr($results);exit;
+			
 			$this->set(compact('evaluation','results'));
+			
+			
+			
 		}
 		$teachers = $this->Evaluation->Teacher->find('list');
 		$this->set(compact('teachers'));

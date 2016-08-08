@@ -43,10 +43,15 @@
 	<div id="Results" class="column">
 		<h3>Results</h3>
 		<?php if (!empty($results[0])):?>
-		<dl>
-			<dt>Average</dt>
-			<dd><?php echo $results[0]['0']['average_result'];?></dd>
-		</dl>
+
+		<table>
+			<tr>
+				<td><b>Average</b></td>
+				<td><b><?php echo $results[0]['0']['average_score'];?></b></td>
+				<td><b><?php echo $results[0]['0']['letter_score']['LetterGrade']['equivalent'];?></b></td>
+			</tr>
+		</table>
+		
 		<table cellpadding = "0" cellspacing = "0">
 			<tr>
 				<th><?php __('Category'); ?></th>
@@ -65,7 +70,7 @@
 				<tr<?php echo $class;?>>
 					<td><?php echo $evaluationResult['Category']['name'];?></td>
 					<td><?php echo $evaluationResult['0']['average_result'];?></td>
-					<td><center><?php echo $evaluationResult['evaluation_results']['equivalent'];?></center></td>
+					<td><center><?php echo $results[0]['0']['letter_result']['LetterGrade']['equivalent'];?></center></td>
 				</tr>
 			<?php endforeach;?>
 			<?php else: ?>
