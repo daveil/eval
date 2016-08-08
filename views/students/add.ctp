@@ -3,13 +3,20 @@
 	<fieldset>
 		<legend><?php __('Add Student'); ?></legend>
 	<?php
-		echo $this->Form->input('last_name');
-		echo $this->Form->input('first_name');
+		echo $this->Form->input('last_name',array('required'=>'required'));
+		echo $this->Form->input('first_name',array('required'=>'required'));
 		echo $this->Form->input('middle_name');
-		echo $this->Form->input('age');
-		echo $this->Form->input('section');
-		echo $this->Form->input('gender');
+		echo $this->Form->input('age',array('required'=>'required'));
+		echo $this->Form->input('section',array('required'=>'required'));
 	?>
+	<?php 
+		echo $this->Form->input('gender', 
+		 array(
+			'type'=>'radio',
+			'options'=>array('M'=>'Male','F'=>'Female'),
+			'class'=>'form-control'));
+	?>
+
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
