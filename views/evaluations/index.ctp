@@ -9,7 +9,15 @@
 	?>
 	</div>
 	<?php 
-		if(isset($results[0])):
+		if(!isset($results[0])):
+		
+	?>
+		<?php if(count($_POST)):?>
+		<h2>No evaluation yet for <i><?php echo $teachers[$_POST['data']['Evaluation']['teacher_id']];?></i>.</h2>
+		<?php else: ?>
+		<h2>Select teacher and click <b>View</b>.</h2>
+		<?php endif;?>
+	<?php	else:
 			$teacher = $results[0]['Teacher'];
 	?>
 	<div id="Teacher" class="column"> 
@@ -56,7 +64,7 @@
 			<tr>
 				<th><?php __('Category'); ?></th>
 				<th><?php __('Score'); ?></th>
-				<th><center><?php __('Letter Grade'); ?></center></th>
+				<th class="hide"><center><?php __('Letter Grade'); ?></center></th>
 			</tr>
 			<?php
 				$i = 0;
@@ -70,7 +78,7 @@
 				<tr<?php echo $class;?>>
 					<td><?php echo $evaluationResult['Category']['name'];?></td>
 					<td><?php echo $evaluationResult['0']['average_result'];?></td>
-					<td><center><?php echo $results[0]['0']['letter_result']['LetterGrade']['equivalent'];?></center></td>
+					<td class="hide"><center><?php echo $results[0]['0']['letter_result']['LetterGrade']['equivalent'];?></center></td>
 				</tr>
 			<?php endforeach;?>
 			<?php else: ?>
