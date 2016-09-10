@@ -31,7 +31,7 @@ div.actions{
 }
 div.actions ul>li{
 	display:inline-block;
-	width:170px;
+	width:200px;
 }
 div.actions ul>li a{
 	border-radius:0;
@@ -44,7 +44,13 @@ div.actions ul>li>ul.active{
 	display:inline-block;
 }
 
-
+div.related .actions{
+	position:relative;
+	top:0px;
+}
+#content .view{
+	margin-top:80px;
+}
 #faculty, #User, #Misc{
 	width:inherit;
 }
