@@ -4,8 +4,8 @@ class LetterGrade extends AppModel {
 
 	function getLetterEquivalent($score){
 		$conditions = array(
-						'LetterGrade.min_grade <=' =>$score,
-						'LetterGrade.max_grade >=' =>$score
+						'LetterGrade.min_grade >=' =>$score,
+						'LetterGrade.max_grade <=' =>$score
 						);
 		return $this->find('first',compact('conditions'));
 	}
