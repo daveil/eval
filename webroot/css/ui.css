@@ -121,6 +121,9 @@ div.three-columns>div.column>*{width:100%;}
 .error{
 	color:red;
 }
+.hide{
+	display:none !important;
+}
 /*
 .navs{
     float: right;
