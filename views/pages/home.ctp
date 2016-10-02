@@ -190,7 +190,7 @@
 	<?php elseif ($user['User']['is_admin'] == 1):?>
 		<div class="home index">
 			<h2>Welcome Admin <?php echo strtoUpper($user['User']['first_name']);?>!</h2>
-			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 		</div>
 	<?php endif;?>
 <?php else:?>

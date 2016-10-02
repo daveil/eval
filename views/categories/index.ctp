@@ -6,7 +6,7 @@
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('code');?></th>
 			<th><?php echo $this->Paginator->sort('precentage');?></th>
-			<th><?php echo $this->Paginator->sort('for_masters');?></th>
+			<!-- <th><?php echo $this->Paginator->sort('for_masters');?></th> -->
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th class="actions"><?php __('Actions');?></th>
@@ -24,7 +24,7 @@
 		<td><?php echo $category['Category']['name']; ?>&nbsp;</td>
 		<td><?php echo $category['Category']['code']; ?>&nbsp;</td>
 		<td><?php echo $category['Category']['precentage']; ?>&nbsp;</td>
-		<td><?php echo $category['Category']['for_masters']; ?>&nbsp;</td>
+		<!-- <td><?php echo $category['Category']['for_masters']; ?>&nbsp;</td> -->
 		<td><?php echo $category['Category']['created']; ?>&nbsp;</td>
 		<td><?php echo $category['Category']['modified']; ?>&nbsp;</td>
 		<td class="actions">

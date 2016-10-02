@@ -27,9 +27,9 @@
 					'options'=>array('M'=>'Male','F'=>'Female'),
 					'class'=>'form-control'));
 		?>
-		<?php echo $this->Form->input('is_master', array('type'=>'checkbox'));?>
+		<?php //echo $this->Form->input('is_master', array('type'=>'checkbox'));?>
 		</fieldset>
-		
+		<!-- comment  -->
 		<?php 
 			if(isset($this->data)):
 			echo $this->Form->submit('Delete',array('id'=>'DeleteButton'));
