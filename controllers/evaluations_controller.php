@@ -6,8 +6,9 @@ class EvaluationsController extends AppController {
 	
 	function index() {
 		if (!empty($this->data)) {
-			$this->Evaluation->recursive =2;
-			$evaluation = $this->Evaluation->findByTeacherId($this->data['Evaluation']['teacher_id']);
+			//$this->Evaluation->recursive =2;
+			//$evaluation = $this->Evaluation->findByTeacherId($this->data['Evaluation']['teacher_id']);
+			$evaluation = $this->data;
 			$results = $this->Evaluation->getAverageResult($this->data['Evaluation']['teacher_id']);
 			if(!empty($evaluation)){
 				foreach($results as $k => $r){

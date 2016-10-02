@@ -1,3 +1,5 @@
+<br><br><br>
+<br><br><br>
 <div class="questions view">
 <h2><?php  __('Question');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
