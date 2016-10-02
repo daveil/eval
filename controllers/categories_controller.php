@@ -50,6 +50,9 @@ class CategoriesController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Category->findBySlug($slug);;
 		}
+		if(is_numeric($slug)){
+			$this->data = $this->Category->read(null, $slug);
+		}
 	}
 
 	function delete($id = null) {
