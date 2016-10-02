@@ -45,6 +45,13 @@
 									)); ?>
 				</li>
 				<li>
+					<?php echo $this->Html->link(__('Contents', true), 
+								array(
+										'controller' => 'contents', 
+										'action' => 'index'
+									)); ?>
+				</li>
+				<li>
 					<?php echo $this->Html->link(__('Logout', true), 
 								array(
 										'controller' => 'users', 
@@ -197,3 +204,7 @@
 </div>
 <?php endif;?>
 -->
+
+<?php
+	echo $this->Html->image('main form.png');
+?>
