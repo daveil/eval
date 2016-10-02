@@ -39,8 +39,8 @@ class EvaluationsController extends AppController {
 
 	function add() {
 		if (!empty($this->data)) {
-			/* TINANGGAL KO NA TO, DI DIN NAMAN NAGAGAMIT, AT DI DIN NAMAN NAGSASAVE SA EVALUATION RESULT YUN EQUIVALENT AFTER NG ISANG ROW
-			foreach($this->data['EvaluationResult'] as $key => $result){
+			
+			/*foreach($this->data['EvaluationResult'] as $key => $result){
 				if(empty($result['score'])){
 					$score = 0;
 				}else{
@@ -74,6 +74,9 @@ class EvaluationsController extends AppController {
 				$this->Session->setFlash(__('Oops! Teacher already evaluated.', true));
 				$this->redirect(array('controller'=>'pages','action' => '/'));
 			}
+		}else{
+			$this->Session->setFlash(__('Oops! No selected teacher.', true));
+			$this->redirect(array('controller'=>'pages','action' => '/'));
 		}
 		
 		if(isset($this->params['named']['teacher_id'])){
@@ -106,7 +109,7 @@ class EvaluationsController extends AppController {
 			array_push($group_questions[$cat_id],$question);
 		}
 			
-		$student_id = $this->params['named']['student_id'];
+		$student5_id = $this->params['named']['student_id'];
 		$this->set(compact('students', 'teachers','categories','group_questions','student_id'));
 	}
 
