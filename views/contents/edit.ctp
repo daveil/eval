@@ -12,12 +12,13 @@ form div {
     vertical-align: none;
 }
 .note-frame{
-	width: 98%;
+	width: 100%;
 }
 </style>
 <div class="contents form">
 <?php echo $this->Form->create('Content');?>
 	<fieldset>
+	
 		<legend><?php __('Edit Content'); ?></legend>
 	<?php
 		echo $this->Form->input('id');

@@ -20,4 +20,3 @@
 	<?php echo $this->Form->submit(__('Submit', true), array('id'=>'SubmitButton'));?>
 	<?php echo $this->Form->end();?>
 </div>
-

@@ -81,15 +81,17 @@ class EvaluationsController extends AppController {
 		
 		if(isset($this->params['named']['teacher_id'])){
 			$teacher_id = $this->params['named']['teacher_id'];
+			$student_id = $this->params['named']['student_id'];
 			$teacher = $this->Evaluation->Teacher->findById($teacher_id);
 			$teacher_name = $teacher['Teacher']['full_name'];
-			$this->set(compact('teacher_id', 'teacher','teacher_name'));
+			$this->set(compact('teacher_id','student_id', 'teacher','teacher_name'));
 		}
 		
 		
 		$students = $this->Evaluation->Student->find('list');
 		$teachers = $this->Evaluation->Teacher->find('list');
-		$categories = $this->Category->find('all',array('conditions'=>array('Category.for_masters'=>$teacher['Teacher']['is_master'])));
+		//$categories = $this->Category->find('all',array('conditions'=>array('Category.for_masters'=>$teacher['Teacher']['is_master'])));
+		$categories = $this->Category->find('all');
 		$group_questions = array();
 		$category_ids = array();
 
