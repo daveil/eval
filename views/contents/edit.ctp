@@ -23,6 +23,7 @@ form div {
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('title');
+		echo $this->Form->input('link');
 		echo $this->Form->input('content',array('type'=>"hidden"));
 	?>
 	<br/>

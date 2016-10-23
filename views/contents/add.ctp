@@ -21,6 +21,7 @@ form div {
 		<legend><?php __('Add Content'); ?></legend>
 		<?php 
 			echo $this->Form->input('title');
+			echo $this->Form->input('link');
 			echo $this->Form->input('content',array('type'=>"hidden"));
 		?>
 	<br/>

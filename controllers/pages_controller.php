@@ -77,11 +77,10 @@ class PagesController extends AppController {
 		}
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
-		}
-		$title = strtoupper(str_replace('-',' ',$page));
-		$aboutUs = $this->Content->find('first',array('conditions'=>array('UPPER(Content.title)'=>$title)));
+		}	
+		$aboutUs = $this->Content->findByLink($page);
 		$this->set(compact('aboutUs'));
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->render($path!='home'?'content':implode('/',$path));
+		$this->render($page!='home'?'content':implode('/',$path));
 	}
 }
