@@ -1,14 +1,4 @@
-<h2><?php __('Evaluation Results');?></h2>
-<div class="three-columns">
-	<div id="Form" class="column">
-	<?php
-		echo $this->Form->create('Evaluation');
-		echo $this->Form->input('teacher_id');
-		echo $this->Form->submit('View');
-		echo $this->Form->end();
-	?>
-	</div>
-	<?php 
+<?php 
 		if(isset($results[0])):
 			$teacher = $results[0]['Teacher'];
 	?>
@@ -79,18 +69,10 @@
 	<?php endif;?>
 	
 	</table>
-	<?php
-	if(!empty($results[0]['Category']['name'])):
-		echo $this->Form->create('Evaluation',array('action'=>'report','target'=>'_blank'));
-		echo $this->Form->input('teacher_id',array('type'=>'hidden','id'=>'TeacherIdPrint'));
-		echo $this->Form->submit('Print');
-		echo $this->Form->end();
-	endif;
-	?>
 <?php endif; ?>
 
 	</div>
 	<?php
 	endif;
 	?>
-</div>
+	<script type="text/javascript">window.print();</script>
