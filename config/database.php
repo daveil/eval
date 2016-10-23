@@ -6,7 +6,7 @@ class DATABASE_CONFIG {
 		'host' => 'mysql.hostinger.ph',
 		'login' => 'u948978129_eval',
 		'password' => 'j3j3m00n',
-		'database' => 'u948978129_eval',
+		'database' => 'eval',
 	);
 	
 	var $default = array(
