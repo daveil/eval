@@ -57,7 +57,13 @@ class AppController extends Controller {
 		$user = $this->Auth->user();
 		$this->set('user', $user);
 
-		
+		if($this->params['controller']=='contents'){
+			if(!$user['User']['is_admin']){
+				$this->Session->setFlash('Invalid access to content.');
+				$this->redirect('/');
+			}
+				
+		}
 		App::Import('Model','Teacher');
 		$this->Teacher = new Teacher;
 		$this->Teacher->recursive=0;
