@@ -90,7 +90,14 @@
 		
 		</table>
 		<?php endif; ?>
-	
+	<?php
+			if(!empty($results[0]['Category']['name'])):
+				echo $this->Form->create('Evaluation',array('action'=>'report','target'=>'_blank'));
+				echo $this->Form->input('teacher_id',array('type'=>'hidden','id'=>'TeacherIdPrint'));
+				echo $this->Form->submit('Print');
+				echo $this->Form->end();
+			endif;
+	?>
 	</div>
 		
 	<div class="column" style="float:left; dsplay:none">

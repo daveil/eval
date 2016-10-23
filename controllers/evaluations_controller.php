@@ -149,4 +149,14 @@ class EvaluationsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	function success(){}
+	function report(){
+		if (!empty($this->data)) {
+			$this->Evaluation->recursive =2;
+			$evaluation = $this->Evaluation->findByTeacherId($this->data['Evaluation']['teacher_id']);
+			$results = $this->Evaluation->getAverageResult($this->data['Evaluation']['teacher_id']);
+			$this->set(compact('evaluation','results'));
+		}else{
+			$this->redirect(array('action' => 'index'));
+		}
+	}
 }
