@@ -214,7 +214,6 @@
 <?php endif;?>
 -->
 <center>
-
 <?php
 	echo $this->Html->image('sci.jpg');
 ?>
