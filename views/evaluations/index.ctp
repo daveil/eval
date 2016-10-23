@@ -1,3 +1,6 @@
+<style type="text/css">
+#EvaluationReportForm, #EvaluationReportForm .submit{padding:0;margin:0;}
+</style>
 <h2><?php __('Evaluation Results');?></h2>
 <div class="three-columns">
 	<div id="Form" class="column">
@@ -51,15 +54,26 @@
 	<div id="Results" class="column">
 		<h3>Results</h3>
 		<?php if (!empty($results[0])):?>
-
+		<?php if($results[0]['0']['average_score']):?>
 		<table>
 			<tr>
 				<td><b>Average</b></td>
 				<td><b><?php echo $results[0]['0']['average_score'];?></b></td>
 				<td><b><?php echo $results[0]['0']['letter_score']['LetterGrade']['equivalent'];?></b></td>
+				<td>
+					<?php
+						if(!empty($results[0]['Category']['name']&&$user['User']['is_admin'])):
+							echo $this->Form->create('Evaluation',array('action'=>'report','target'=>'_blank'));
+							echo $this->Form->input('teacher_id',array('type'=>'hidden','id'=>'TeacherIdPrint'));
+							echo $this->Form->submit('Print');
+							echo $this->Form->end();
+						endif;
+					?>
+				</td>
 			</tr>
 		</table>
 		
+		<?php endif;?>
 		<table cellpadding = "0" cellspacing = "0">
 			<tr>
 				<th><?php __('Category'); ?></th>
@@ -83,7 +97,7 @@
 			<?php endforeach;?>
 			<?php else: ?>
 				<tr<?php echo $class;?>>
-					<td colspan="2">No Evaluation Yet</td>
+					<td colspan="2" style="text-align:center;font-size:1.5rem;"><h4>No Evaluation Yet</h4></td>
 				</tr>
 		
 		<?php endif;?>
@@ -119,14 +133,7 @@
 			</tbody>
 		</table>
 		<?php endif; ?>
-	<?php
-			if(!empty($results[0]['Category']['name']&&$user['User']['is_admin'])):
-				echo $this->Form->create('Evaluation',array('action'=>'report','target'=>'_blank'));
-				echo $this->Form->input('teacher_id',array('type'=>'hidden','id'=>'TeacherIdPrint'));
-				echo $this->Form->submit('Print');
-				echo $this->Form->end();
-			endif;
-	?>
+	
 	</div>
 		
 	
