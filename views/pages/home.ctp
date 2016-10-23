@@ -21,7 +21,8 @@
 		<br/><br/><br/><br/><br/><br/><br/>
 	</div>
 	<?php if($user['User']['is_admin'] == 1):?>
-		<div class="actions">
+		<!--admin menu -->
+		<div class="actions" style="margin-left: 83px;">
 			<ul>
 				<li>
 					<?php echo $this->Html->link(__('Faculty', true), 
@@ -91,7 +92,8 @@
 		-->
 		</div>
 	<?php else:?>
-		<div class="actions">
+		<!--student menu -->
+		<div class="actions" style="margin-left: 83px;margin-top: 60px;" >
 			<ul>
 				<li>
 					<?php echo $this->Html->link(__('Profile', true), 
@@ -211,7 +213,9 @@
 </div>
 <?php endif;?>
 -->
+<center>
 
 <?php
 	echo $this->Html->image('sci.jpg');
 ?>
+</center>
