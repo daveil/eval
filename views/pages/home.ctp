@@ -101,7 +101,14 @@
 									)); ?>
 				</li>
 				<li>
-					<a href="#faculty" class="dropdown-toggle">Faculty Evaluation</a>
+					<?php echo $this->Html->link(__('Faculty Evaluation', true), 
+								array(
+										'controller' => 'evaluations', 
+										'action' => 'add?select'
+									)); 
+									?>
+					<?php if(false):?>				
+					<a href="#faculty" class="dropdown-toggle ">Faculty Evaluation</a>
 					<ul id="faculty">
 						<?php 
 							foreach($Teachers as $teacher):
@@ -115,7 +122,7 @@
 						<?php endforeach;?>
 				
 					</ul>
-					
+					<?php endif; ?>
 				</li>
 				<li>
 					<?php echo $this->Html->link(__('Result', true), 

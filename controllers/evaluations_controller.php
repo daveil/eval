@@ -38,81 +38,79 @@ class EvaluationsController extends AppController {
 	}
 
 	function add() {
+		$select = false;
+		$teacher_id  = $student_id =null;
 		if (!empty($this->data)) {
-			
-			/*foreach($this->data['EvaluationResult'] as $key => $result){
-				if(empty($result['score'])){
-					$score = 0;
-				}else{
-					$score = $result['score'];
+			if(!isset($this->data['Evaluation']['select'])){
+				$this->Evaluation->create();
+				if ($this->Evaluation->saveAll($this->data)) {
+					
+					$this->Session->setFlash(__('Successfully Submitted', true));
+					$this->redirect(array('action' => 'success'));
+				} else {
+					$this->Session->setFlash(__('The evaluation could not be saved. Please, try again.', true));
 				}
-				$letterGrade = $this->LetterGrade->getLetterEquivalent($score);
-				$this->data['EvaluationResult'][$key]['equivalent'] = $letterGrade['LetterGrade']['equivalent'];
-			}
-			$evalLetterGrade = $this->LetterGrade->getLetterEquivalent($this->data['Evaluation']['score']);
-			$this->data['Evaluation']['equivalent'] = $evalLetterGrade['LetterGrade']['equivalent'];
-			pr($this->data);exit;
-			*/
-			$this->Evaluation->create();
-			if ($this->Evaluation->saveAll($this->data)) {
-				
-				$this->Session->setFlash(__('Successfully Submitted', true));
-				$this->redirect(array('action' => 'success'));
-			} else {
-				$this->Session->setFlash(__('The evaluation could not be saved. Please, try again.', true));
+			}else{
+				$teacher_id = $this->data['Evaluation']['teacher_id'];
+				$student_id = $_SESSION['Auth']['User']['id'];
 			}
 		}
 		
 		//CHECK IF TEACHER ALREADY EVALUATED
-		if(isset($this->params['named']['teacher_id']) && isset($this->params['named']['student_id'])){
+		if($teacher_id&&$student_id){
 			
 			$result = $this->Evaluation->find('all',array('conditions'=>array(
-												'Evaluation.teacher_id'=>$this->params['named']['teacher_id'],
-												'Evaluation.student_id'=>$this->params['named']['student_id']
+												'Evaluation.teacher_id'=>$teacher_id,
+												'Evaluation.student_id'=>$student_id
 											)));
 			if($result){
 				$this->Session->setFlash(__('Oops! Teacher already evaluated.', true));
-				$this->redirect(array('controller'=>'pages','action' => '/'));
+				$this->redirect(array('controller'=>'evaluations','action' => 'add?select'));
 			}
 		}else{
-			$this->Session->setFlash(__('Oops! No selected teacher.', true));
-			$this->redirect(array('controller'=>'pages','action' => '/'));
-		}
-		
-		if(isset($this->params['named']['teacher_id'])){
-			$teacher_id = $this->params['named']['teacher_id'];
-			$student_id = $this->params['named']['student_id'];
-			$teacher = $this->Evaluation->Teacher->findById($teacher_id);
-			$teacher_name = $teacher['Teacher']['full_name'];
-			$this->set(compact('teacher_id','student_id', 'teacher','teacher_name'));
-		}
-		
-		
-		$students = $this->Evaluation->Student->find('list');
-		$teachers = $this->Evaluation->Teacher->find('list');
-		//$categories = $this->Category->find('all',array('conditions'=>array('Category.for_masters'=>$teacher['Teacher']['is_master'])));
-		$categories = $this->Category->find('all');
-		$group_questions = array();
-		$category_ids = array();
-
-		
-		//Initialize group_questions[category] 
-		foreach($categories as $category){
-			$cat_id =  $category['Category']['id'];
-			$group_questions[$cat_id] = array();
-			array_push($category_ids,$cat_id);
-		}
-		
-		$questions = $this->Category->Question->find('all',array('conditions'=>array('Question.category_id'=>$category_ids)));
-		
-		//Push questions to group_questions[category]
-		foreach($questions as $question){
-			$cat_id =  $question['Question']['category_id'];
-			array_push($group_questions[$cat_id],$question);
+			if(!isset($_GET['select'])){
+				$this->Session->setFlash(__('Oops! No selected teacher.', true));
+				$this->redirect(array('controller'=>'pages','action' => '/'));
+			}else{
+				$teachers = $this->Evaluation->Teacher->find('list');
+				$select = true;
+				$this->set(compact('teachers','select'));
+			}
 		}
 			
-		$student5_id = $this->params['named']['student_id'];
-		$this->set(compact('students', 'teachers','categories','group_questions','student_id'));
+		if(!$select){
+			if($teacher_id){
+				$teacher = $this->Evaluation->Teacher->findById($teacher_id);
+				$teacher_name = $teacher['Teacher']['full_name'];
+				$this->set(compact('teacher_id','student_id', 'teacher','teacher_name'));
+			}
+			
+			
+			$students = $this->Evaluation->Student->find('list');
+			$teachers = $this->Evaluation->Teacher->find('list');
+			//$categories = $this->Category->find('all',array('conditions'=>array('Category.for_masters'=>$teacher['Teacher']['is_master'])));
+			$categories = $this->Category->find('all');
+			$group_questions = array();
+			$category_ids = array();
+
+			
+			//Initialize group_questions[category] 
+			foreach($categories as $category){
+				$cat_id =  $category['Category']['id'];
+				$group_questions[$cat_id] = array();
+				array_push($category_ids,$cat_id);
+			}
+			
+			$questions = $this->Category->Question->find('all',array('conditions'=>array('Question.category_id'=>$category_ids)));
+			
+			//Push questions to group_questions[category]
+			foreach($questions as $question){
+				$cat_id =  $question['Question']['category_id'];
+				array_push($group_questions[$cat_id],$question);
+			}
+				
+			$this->set(compact('students', 'teachers','categories','group_questions','student_id'));
+		}
 	}
 
 	function edit($id = null) {
