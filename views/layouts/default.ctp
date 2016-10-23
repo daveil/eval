@@ -35,7 +35,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link(__('Lipa City National Science High School', true), '/'); ?></h1>
+			<h1 style="font-size: x-large;"><?php echo $this->Html->link(__('Lipa City National Science High School', true), '/'); ?></h1>
 		</div>
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>

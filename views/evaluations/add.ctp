@@ -18,7 +18,7 @@
 }
 </style>
 <?php if(isset($select)):?>
-<h2><?php __('Evaluation');?></h2>
+<h2><?php __('Teacher Evaluation');?></h2>
 <div class="three-columns">
 	<div id="Form" class="column">
 <?php

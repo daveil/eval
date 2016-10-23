@@ -1,13 +1,13 @@
 
 <?php if(!$user):?>
-<div class="home index">
+<div class="home index" style="margin-left: 85px;margin-top: 20px;" >
 	<h2>Welcome user!</h2>
 	<br/>
 	<h3>Please Log In</h3>
 
-	<br/><br/><br/><br/><br/><br/>
+	<br/>
 </div>
-<div class="actions">
+<div class="actions" style="margin-left: 90px;margin-top: 20px;">
 	<ul>
 		<li><?php echo $this->Html->link(__('Register', true), array('controller' => '', 'action' => 'register')); ?> </li>
 		<li><?php echo $this->Html->link(__('Login', true), array('controller' => '', 'action' => 'login')); ?> </li>
@@ -17,12 +17,12 @@
 
 <?php else:?>
 	<div class="home index">
-		<h2>Welcome <?php echo $user['User']['first_name'].' '.$user['User']['last_name']?>!</h2>
-		<br/><br/><br/><br/><br/><br/><br/>
+		<h2 style="margin-left: 450px; font-size: xx-large;"> Welcome <?php echo $user['User']['first_name'].' '.$user['User']['last_name']?>!</h2>
+		<br/><br/>
 	</div>
 	<?php if($user['User']['is_admin'] == 1):?>
 		<!--admin menu -->
-		<div class="actions" style="margin-left: 83px;margin-top: 60px;">
+		<div class="actions" style="margin-left: 125px;margin-top: 50px;">
 			<ul>
 				<li>
 					<?php echo $this->Html->link(__('Faculty', true), 
@@ -93,7 +93,7 @@
 		</div>
 	<?php else:?>
 		<!--student menu -->
-		<div class="actions" style="margin-left: 83px;margin-top: 60px;" >
+		<div class="actions" style="margin-left: 125px;margin-top: 50px;" >
 			<ul>
 				<li>
 					<?php echo $this->Html->link(__('Profile', true), 
