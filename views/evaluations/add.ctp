@@ -144,6 +144,10 @@
 		?>
 		<input name="data[Evaluation][score]" type="hidden" id="EvaluationScore">
 		<div class="controls">
+			<div id="ErrorMessage" style="background-color:#e32;color:#fff;">
+				<p style="display:inline;"></p>
+				<a style="color:#fff">&times;</a>
+			</div>
 			<div class="action">
 					<button id="back-button">Back</button>
 			</div>

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$('#ErrorMessage').hide();
 	//Initialize variables
 	var CURRENT_PAGE = 0;
 	var TOTAL_PAGES = $('.page').length;
@@ -55,17 +56,33 @@ $(document).ready(function(){
 		var inputbox = $(this).parents('tr:first').find('.per-item-score');
 		inputbox.val(score);
 		computeTotal(CURRENT_PAGE);
+		$('#ErrorMessage').hide();
 	});
 	
 	//Navigation buttons
 	$('#proceed-button').click(function(e){
 		e.preventDefault();
+		var inputs = $('.page-'+CURRENT_PAGE+' .choices>input.per-item-score');
+		var isComplete = true;
+		$.each(inputs,function(i,input){
+			console.log($(input).val());
+			isComplete = isComplete && $(input).val();
+		});
+		if(!isComplete){
+			$('#ErrorMessage>p').text('Oops! Incomplete evaluation')
+			$('#ErrorMessage').show();
+			return;
+		}
+		
 		var curr_page =  CURRENT_PAGE + 1;
 		if(curr_page<TOTAL_PAGES)
 			showCurrentPage(curr_page);
 		else
 			submitEvaluation();
 			
+	});
+	$('#ErrorMessage>a').click(function(){
+		$('#ErrorMessage').hide();
 	});
 	$('#back-button').click(function(e){
 		e.preventDefault();
