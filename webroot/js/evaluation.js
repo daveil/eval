@@ -52,7 +52,7 @@ $(document).ready(function(){
 	//Handle radio button input
 	$('.choices>input[type="radio"]').change(function(){
 		var score  =  $(this).val();
-		var inputbox = $(this).parent().find('input[type="text"]');
+		var inputbox = $(this).parents('tr:first').find('.per-item-score');
 		inputbox.val(score);
 		computeTotal(CURRENT_PAGE);
 	});

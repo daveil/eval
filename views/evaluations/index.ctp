@@ -9,7 +9,15 @@
 	?>
 	</div>
 	<?php 
-		if(isset($results[0])):
+		if(!isset($results[0])):
+		
+	?>
+		<?php if(count($_POST)):?>
+		<h2>No evaluation yet for <i><?php echo $teachers[$_POST['data']['Evaluation']['teacher_id']];?></i>.</h2>
+		<?php else: ?>
+		<h2>Select teacher and click <b>View</b>.</h2>
+		<?php endif;?>
+	<?php	else:
 			$teacher = $results[0]['Teacher'];
 	?>
 	<div id="Teacher" class="column"> 
@@ -34,7 +42,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Gender'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $teacher['gender']; ?>
+			<?php echo strtoupper($teacher['gender']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -42,55 +50,90 @@
 	</div>
 	<div id="Results" class="column">
 		<h3>Results</h3>
+		<?php if (!empty($results[0])):?>
 
-		<?php 
-		if (!empty($results[0])):
-		if(!empty($results[0]['Category']['name'])):
-		?>
-		<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt>Average</dt>
-		<dd><?php echo $results[0]['0']['average_score']; ?></dd>
-		</dl>
+		<table>
+			<tr>
+				<td><b>Average</b></td>
+				<td><b><?php echo $results[0]['0']['average_score'];?></b></td>
+				<td><b><?php echo $results[0]['0']['letter_score']['LetterGrade']['equivalent'];?></b></td>
+			</tr>
+		</table>
+		
+		<table cellpadding = "0" cellspacing = "0">
+			<tr>
+				<th><?php __('Category'); ?></th>
+				<th><?php __('Score'); ?></th>
+				<th class="hide"><center><?php __('Letter Grade'); ?></center></th>
+			</tr>
+			<?php
+				$i = 0;
+				if (!empty($results[0]['Category']['name'])):
+				foreach ($results as $evaluationResult):
+					$class = null;
+					if ($i++ % 2 == 0) {
+						$class = ' class="altrow"';
+					}
+				?>
+				<tr<?php echo $class;?>>
+					<td><?php echo $evaluationResult['Category']['name'];?></td>
+					<td><?php echo $evaluationResult['0']['average_result'];?></td>
+					<td class="hide"><center><?php echo $results[0]['0']['letter_result']['LetterGrade']['equivalent'];?></center></td>
+				</tr>
+			<?php endforeach;?>
+			<?php else: ?>
+				<tr<?php echo $class;?>>
+					<td colspan="2">No Evaluation Yet</td>
+				</tr>
+		
 		<?php endif;?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php __('Category'); ?></th>
-		<th><?php __('Score'); ?></th>
-	</tr>
+		
+		</table>
+		<?php endif; ?>
 	<?php
-		$i = 0;
-		if (!empty($results[0]['Category']['name'])):
-		foreach ($results as $evaluationResult):
-			$class = null;
-			if ($i++ % 2 == 0) {
-				$class = ' class="altrow"';
-			}
-		?>
-		<tr<?php echo $class;?>>
-			<td><?php echo $evaluationResult['Category']['name'];?></td>
-			<td><?php echo $evaluationResult['0']['average_result'];?></td>
-		</tr>
-	<?php endforeach;?>
-	<?php else: ?>
-		<tr<?php echo $class;?>>
-			<td colspan="2">No Evaluation Yet</td>
-		</tr>
+			if(!empty($results[0]['Category']['name'])):
+				echo $this->Form->create('Evaluation',array('action'=>'report','target'=>'_blank'));
+				echo $this->Form->input('teacher_id',array('type'=>'hidden','id'=>'TeacherIdPrint'));
+				echo $this->Form->submit('Print');
+				echo $this->Form->end();
+			endif;
+	?>
+	</div>
+		
+	<div class="column" style="float:left; dsplay:none">
+		<table >
+			<caption><h3>Letter Grade Equivalent</h3></caption>
+			<thead>
+				<th>Letter Grade</th>
+				<th>Equivalent Score</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>O - Outstanding</td>
+					<td>8.60 - 10.00 </td>
+				</tr>
+				<tr>
+					<td>VS - Very Satisfactory</td>
+					<td>6.60 - 8.59</td>
+				</tr>
+				<tr>
+					<td>S - Satisfactory</td>
+					<td>4.60 - 6.59</td>
+				</tr>
+				<tr>
+					<td>U - Unsatisfactory</td>
+					<td>2.60 - 4.59</td>
+				</tr>
+				<tr>
+					<td>P - Poor</td>
+					<td>2.59 & below</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	
 	<?php endif;?>
-	
-	</table>
-	<?php
-	if(!empty($results[0]['Category']['name'])):
-		echo $this->Form->create('Evaluation',array('action'=>'report','target'=>'_blank'));
-		echo $this->Form->input('teacher_id',array('type'=>'hidden','id'=>'TeacherIdPrint'));
-		echo $this->Form->submit('Print');
-		echo $this->Form->end();
-	endif;
-	?>
-<?php endif; ?>
 
-	</div>
-	<?php
-	endif;
-	?>
 </div>
+	
+

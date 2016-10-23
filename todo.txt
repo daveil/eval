@@ -1,0 +1,72 @@
+<?php
+Please follow instructions:
+[x] 0. Put x between [] if done.
+[] 1. Display letter grade inside evaluations index function.
+   Loop on data to display letter grade per category.
+   Get letter grade for result[0]['0']['average_result']
+   Set value to result[0]['0']['average_letter']
+   Display average_letter along with the average_result 
+   inside evaluations/index.ctp line 48
+[x] 2. Create edit content summernote
+[x] 3. Add is_master checkbox on teachers/index
+    Change gender inputbox to radio button Male / Female
+	Should be able to add / edit after changes
+[x] 4. Revise code for line 75 - 76  on evaluations add function
+    Filter  category based on current teacher is_master value. 
+	Filter questions based on filtered category.
+[x] 5. NEW: Add student gender on table, register and  edit profile
+[x] 6. Revert inputbox in evaluations module to type hidden
+      for score and percent. No need to show for debugging.
+ 
+	
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//1. Return original getAverageResult query. line 53 - 73  commented.
+//2. Create a letter_grades table with columns
+		id   min_grade    max_grade    equivalent
+//3. Init letter_grades MVC.
+//4. Inside the letter_grade model create:
+	function getLetterEquivalent($score){
+		//Query from table
+		return $equivalent;
+	}
+//5. Add column equivalent on evaluations table	
+//6. Inside evaluations add function before saving,
+	loop on the data to get Evaluation.score and
+	EvaluationResults[index][score]. 
+	Use the LetterGrade->getLetterEquivalent and set equivalent field
+	accordingly to save both the Evaluation total score equivalent as
+	well as the EvalResult score per category.
+	
+//7. Inside evaluations index function add
+	results[0]['0']['average_letter'] =  $this->LetterGrade->getLetterEquivalent(results[0]['0']['average_result']);
+	Display average_letter along with the average_result 
+	inside evaluations/index.ctp line 48
+//8. Menu should be left justified. Return Evaluations dropdown for teachers name.
+	Return yellow green box for the links.
+
+
+	

@@ -1,4 +1,5 @@
 <div class="questions form">
+<br><br><br><br><br><br><br><br>
 <?php echo $this->Form->create('Question');?>
 	<fieldset>
 		<legend><?php __('Add Question'); ?></legend>

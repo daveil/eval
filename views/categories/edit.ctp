@@ -1,13 +1,13 @@
-	<div class="categories form">
+<div class="categories form">
 <?php echo $this->Form->create('Category');?>
 	<fieldset>
-		<legend><?php __('ASO'); ?></legend>
+		<legend><?php __('Edit Category'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('code');
 		echo $this->Form->input('precentage');
-		echo $this->Form->input('for_masters');
+		//echo $this->Form->input('for_masters');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>

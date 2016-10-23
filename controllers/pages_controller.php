@@ -52,7 +52,7 @@ class PagesController extends AppController {
  * @var array
  * @access public
  */
-	var $uses = array();
+	var $uses = array('Content');
 
 /**
  * Displays a view
@@ -78,6 +78,16 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
+		
+		if ($page == 'about-us'){
+		
+			$aboutUs = $this->Content->findByTitle('About Us');
+			//pr($aboutUs);exit;
+			$this->set(compact('aboutUs'));
+		}
+		
+		
+		
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));
 	}

@@ -1,4 +1,4 @@
-/**
+﻿/**
  *
  * Generic CSS for CakePHP
  *
@@ -79,9 +79,9 @@ ul, li {
 }
 #header h1 {
 	line-height:20px;
-	background: #003d4c url('../img/cake.icon.png') no-repeat left;
+	background: #003d4c url('../img/logo.png') no-repeat left;
 	color: #fff;
-	padding: 0px 30px;
+	padding: 5px 30px;
 }
 #header h1 a {
 	color: #fff;
@@ -537,4 +537,5 @@ div.code-coverage-results span.result-good {
 /** Elements **/
 #url-rewriting-warning {
 	display: none;
+haerold
 }

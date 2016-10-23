@@ -19,10 +19,17 @@
 			echo $this->Form->input('last_name');
 			echo $this->Form->input('first_name');
 			echo $this->Form->input('middle_name');
-			echo $this->Form->input('gender');
 		?>
+		<?php 
+			echo $this->Form->input('gender', 
+					array(
+					'type'=>'radio',
+					'options'=>array('M'=>'Male','F'=>'Female'),
+					'class'=>'form-control'));
+		?>
+		<?php //echo $this->Form->input('is_master', array('type'=>'checkbox'));?>
 		</fieldset>
-		
+		<!-- comment  -->
 		<?php 
 			if(isset($this->data)):
 			echo $this->Form->submit('Delete',array('id'=>'DeleteButton'));
