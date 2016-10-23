@@ -78,17 +78,10 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
-		
-		if ($page == 'about-us'){
-		
-			$aboutUs = $this->Content->findByTitle('About Us');
-			//pr($aboutUs);exit;
-			$this->set(compact('aboutUs'));
-		}
-		
-		
-		
+		$title = strtoupper(str_replace('-',' ',$page));
+		$aboutUs = $this->Content->find('first',array('conditions'=>array('UPPER(Content.title)'=>$title)));
+		$this->set(compact('aboutUs'));
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->render(implode('/', $path));
+		$this->render($path!='home'?'content':implode('/',$path));
 	}
 }
