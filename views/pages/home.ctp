@@ -17,12 +17,12 @@
 
 <?php else:?>
 	<div class="home index">
-		<h2 style="margin-left: 450px; font-size: xx-large;"> Welcome <?php echo $user['User']['first_name'].' '.$user['User']['last_name']?>!</h2>
-		<br/><br/>
+		<h2 style="margin-left: 90px; font-size: xx-large;"> Welcome <?php echo $user['User']['first_name'].' '.$user['User']['last_name']?>!</h2>
+		<br/>
 	</div>
 	<?php if($user['User']['is_admin'] == 1):?>
 		<!--admin menu -->
-		<div class="actions" style="margin-left: 125px;margin-top: 50px;">
+		<div class="actions" style="margin-left: 96px;margin-top: 50px;">
 			<ul>
 				<li>
 					<?php echo $this->Html->link(__('Faculty', true), 
@@ -93,7 +93,7 @@
 		</div>
 	<?php else:?>
 		<!--student menu -->
-		<div class="actions" style="margin-left: 125px;margin-top: 50px;" >
+		<div class="actions" style="margin-left: 90px;margin-top: 50px;" >
 			<ul>
 				<li>
 					<?php echo $this->Html->link(__('Profile', true), 
