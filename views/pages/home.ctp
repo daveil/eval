@@ -5,7 +5,7 @@
 	<br/>
 	<h3>Please Log In</h3>
 
-	<br/>
+	
 </div>
 <div class="actions" style="margin-left: 90px;margin-top: 20px;">
 	<ul>
@@ -93,7 +93,7 @@
 		</div>
 	<?php else:?>
 		<!--student menu -->
-		<div class="actions" style="margin-left: 90px;margin-top: 50px;" >
+		<div class="actions" style="margin-left: 96px;margin-top: 50px;" >
 			<ul>
 				<li>
 					<?php echo $this->Html->link(__('Profile', true), 
