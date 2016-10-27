@@ -62,7 +62,7 @@
 				<td><b><?php echo $results[0]['0']['letter_score']['LetterGrade']['equivalent'];?></b></td>
 				<td>
 					<?php
-						if(!empty($results[0]['Category']['name']&&$user['User']['is_admin'])):
+						if(!empty($results[0]['Category']['name'])&&$user['User']['is_admin']):
 							echo $this->Form->create('Evaluation',array('action'=>'report','target'=>'_blank'));
 							echo $this->Form->input('teacher_id',array('type'=>'hidden','id'=>'TeacherIdPrint'));
 							echo $this->Form->submit('Print');

@@ -3,8 +3,8 @@ class DATABASE_CONFIG {
 	var $remote = array(
 		'driver' => 'mysql',
 		'persistent' => false,
-		'host' => 'mysql.hostinger.ph',
-		'login' => 'u948978129_eval',
+		'host' => 'localhost',
+		'login' => 'lcnsh_admin',
 		'password' => 'j3j3m00n',
 		'database' => 'eval',
 	);
