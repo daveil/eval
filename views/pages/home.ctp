@@ -22,7 +22,7 @@
 	</div>
 	<?php if($user['User']['is_admin'] == 1):?>
 		<!--admin menu -->
-		<div class="actions" style="margin-left: 96px;margin-top: 50px;">
+		<div class="actions" style="margin-left: 166spx;margin-top: 50px;">
 			<ul>
 				<li>
 					<?php echo $this->Html->link(__('Faculty', true), 
@@ -93,7 +93,7 @@
 		</div>
 	<?php else:?>
 		<!--student menu -->
-		<div class="actions" style="margin-left: 96px;margin-top: 50px;" >
+		<div class="actions" style="margin-left: 94px;margin-top: 50px;" >
 			<ul>
 				<li>
 					<?php echo $this->Html->link(__('Profile', true), 
