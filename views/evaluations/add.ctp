@@ -130,7 +130,7 @@
 						</tbody>
 					</table>
 				<?php endif;?>
-				<div class="total pull-right" style="width:60px;padding-right:25px;">
+				<div class="total pull-right" style="width:60px;padding-left:25px;">
 					<label for="">Total</label>
 					<input type="text" class="total total-<?php echo $page;?>" id="EvaluationTotal<?php echo $page;?>" name="data[EvaluationResult][<?php echo $res_indx;?>][total]" readonly="readonly" />
 					<input type="hidden" class="precent precent-<?php echo $page;?>" name="EvaluationPercent<?php echo $page;?>"  readonly="readonly" value="<?php echo $percentage;?>" />

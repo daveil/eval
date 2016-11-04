@@ -116,7 +116,7 @@ div.three-columns>div.column>*{width:100%;}
 }
 #flashMessage{
 	margin-top:80px !important;
-	margin-bottom: -50px;
+	margin-bottom: -80px;
 }
 .error{
 	color:red;
