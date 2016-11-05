@@ -6,19 +6,14 @@
 			<?php echo $student['Student']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Last Name'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('User'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $student['Student']['last_name']; ?>
+			<?php echo $this->Html->link($student['User']['id'], array('controller' => 'users', 'action' => 'view', $student['User']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('First Name'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Slug'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $student['Student']['first_name']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Middle Name'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $student['Student']['middle_name']; ?>
+			<?php echo $student['Student']['slug']; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Age'); ?></dt>
@@ -28,7 +23,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Section'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $student['Student']['section']; ?>
+			<?php echo $this->Html->link($student['Section']['name'], array('controller' => 'sections', 'action' => 'view', $student['Section']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Gender'); ?></dt>
@@ -55,6 +50,10 @@
 		<li><?php echo $this->Html->link(__('Delete Student', true), array('action' => 'delete', $student['Student']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $student['Student']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Students', true), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Student', true), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users', true), array('controller' => 'users', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User', true), array('controller' => 'users', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Sections', true), array('controller' => 'sections', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Section', true), array('controller' => 'sections', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Evaluations', true), array('controller' => 'evaluations', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Evaluation', true), array('controller' => 'evaluations', 'action' => 'add')); ?> </li>
 	</ul>
@@ -68,6 +67,7 @@
 		<th><?php __('Student Id'); ?></th>
 		<th><?php __('Teacher Id'); ?></th>
 		<th><?php __('Score'); ?></th>
+		<th><?php __('Equivalent'); ?></th>
 		<th><?php __('Created'); ?></th>
 		<th class="actions"><?php __('Actions');?></th>
 	</tr>
@@ -84,6 +84,7 @@
 			<td><?php echo $evaluation['student_id'];?></td>
 			<td><?php echo $evaluation['teacher_id'];?></td>
 			<td><?php echo $evaluation['score'];?></td>
+			<td><?php echo $evaluation['equivalent'];?></td>
 			<td><?php echo $evaluation['created'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View', true), array('controller' => 'evaluations', 'action' => 'view', $evaluation['id'])); ?>
