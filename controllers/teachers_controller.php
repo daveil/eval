@@ -10,7 +10,8 @@ class TeachersController extends AppController {
 		}
 		$this->Teacher->recursive = 0;
 		$teachers =  $this->Teacher->find('list');
-		$this->set(compact('teachers'));
+		$sections =  $this->Teacher->Section->find('list');
+		$this->set(compact('teachers','sections'));
 	}
 
 	function view($id = null) {
