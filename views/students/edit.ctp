@@ -4,6 +4,7 @@
 		<legend><?php __('Edit Student'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
+		echo $this->Form->input('user_id',array('type'=>'hidden'));
 		echo $this->Form->input('User.first_name');
 		echo $this->Form->input('User.last_name');
 		echo $this->Form->input('User.middle_name');
