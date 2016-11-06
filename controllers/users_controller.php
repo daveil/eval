@@ -75,7 +75,9 @@ class UsersController extends AppController {
 			}
 		}
 		$data = $this->Auth->user();
-		$this->set(compact('data'));
+		$data =  $this->Student->findByUserId($data['User']['id']);
+		$sections = $this->Student->Section->find('list');
+		$this->set(compact('data','sections'));
 	}
 	
 	function check_password(){
