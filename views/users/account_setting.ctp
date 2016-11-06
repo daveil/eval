@@ -35,6 +35,17 @@
 				echo $this->Form->input('last_name',array('value'=>$data['User']['last_name'],'disabled'=>'disabled','required'=>'required'));
 				echo $this->Form->input('first_name',array('value'=>$data['User']['first_name'],'disabled'=>'disabled','required'=>'required'));
 				echo $this->Form->input('middle_name',array('value'=>$data['User']['middle_name'],'disabled'=>'disabled'));
+				if(!$data['User']['is_admin']){
+					echo $this->Form->input('Student.age',array('value'=>$data['Student']['age'],'disabled'=>'disabled','required'=>'required'));
+					echo $this->Form->input('Student.section_id',array('value'=>$data['Student']['section_id'],'options'=>$sections,'disabled'=>'disabled','required'=>'required'));
+					echo $this->Form->input('Student.gender', 
+						array(
+						'type'=>'radio',
+						'options'=>array('M'=>'Male','F'=>'Female'),
+						'disabled'=>'disabled',
+						'value'=>$data['Student']['gender'],
+						'class'=>'form-control'));
+				}
 			?>	
 		</div>
 		

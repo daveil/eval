@@ -45,9 +45,9 @@ $(document).ready(function(){
 	$('#ChangeInfo').on('click',function(){
 		var isCheck =  $(this).is(':checked');
 		if(isCheck){
-			$('#InfoWrapper').find('input').removeAttr('disabled');
+			$('#InfoWrapper').find('input,select').removeAttr('disabled');
 		}else{
-			$('#InfoWrapper').find('input').attr('disabled','disabled');
+			$('#InfoWrapper').find('input,select').attr('disabled','disabled');
 		}
 	});
 	
