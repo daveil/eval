@@ -15,7 +15,7 @@
 			echo $this->Form->input('first_name',array('placeholder'=>'First Name','required'=>'required'));
 			echo $this->Form->input('middle_name',array('placeholder'=>'MiddleName','required'=>'required'));
 			echo $this->Form->input('Student.age',array('placeholder'=>'Age','required'=>'required'));
-			echo $this->Form->input('Student.section_id',array('options'=>$sections,'required'=>'required'));
+			echo $this->Form->input('Student.section_id',array('empty'=>'Select one','options'=>$sections,'required'=>'required'));
 			echo $this->Form->input('Student.gender', 
 					array(
 					'type'=>'radio',
