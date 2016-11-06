@@ -68,6 +68,10 @@ class UsersController extends AppController {
 			}
 		
 			if ($this->User->save($this->data)) {
+				if(isset($this->data['Student'])){
+					$this->Student->save($this->data['Student']);
+				}
+					
 				$this->Session->setFlash(__('User account updated', true));	
 				$this->redirect('/');
 			} else {
