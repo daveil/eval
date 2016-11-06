@@ -34,8 +34,8 @@ class StudentsController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			
-			if ($this->Student->save($this->data)) {
+			$this->data['User']['id']=$this->data['Student']['user_id'];
+			if ($this->Student->saveAll($this->data)) {
 				$this->Session->setFlash(__('The student has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -44,6 +44,8 @@ class StudentsController extends AppController {
 		}
 		if (empty($this->data)) {
 			$this->data = $this->Student->findById($id);
+			$sections = $this->Student->Section->find('list');
+			$this->set(compact('sections'));
 		}
 	}
 

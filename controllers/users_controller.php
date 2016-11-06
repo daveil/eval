@@ -21,7 +21,7 @@ class UsersController extends AppController {
 		if ($this->data) {
 			if ($this->data['User']['password'] == $this->Auth->password($this->data['User']['confirm_password'])) {
 				$this->User->create();
-				if($this->User->save($this->data)){
+				if($this->User->saveAll($this->data)){
 					$this->Session->setFlash(__('User created', true));	
 					
 					$data = $this->User->read(); 
@@ -30,6 +30,8 @@ class UsersController extends AppController {
 				}
 			}
 		}
+		$sections = $this->User->Student->Section->find('list');
+		$this->set(compact('sections'));
 	}
 	
 	function check(){

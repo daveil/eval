@@ -281,7 +281,7 @@ label {
 	font-size: 110%;
 	margin-bottom:3px;
 }
-input, textarea {
+input, textarea,select {
 	clear: both;
 	font-size: 140%;
 	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
