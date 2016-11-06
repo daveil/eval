@@ -28,8 +28,11 @@
 		echo $this->Form->submit('Evaluate');
 		echo $this->Form->end();
 ?>
-<?php if($_GET['select']=='!'):?>
+<?php if($_GET['select']=='evaluated'):?>
 	<script type="text/javascript">alert('Oops! This teacher is already evaluated.');</script>
+<?php endif;?>
+<?php if($_GET['select']=='notime'):?>
+	<script type="text/javascript">alert('Evaluation not in schedule.');</script>
 <?php endif;?>
 </div>
 <h2>Select teacher and click <b>Evaluate</b>.</h2>

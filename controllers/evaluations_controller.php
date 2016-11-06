@@ -2,7 +2,7 @@
 class EvaluationsController extends AppController {
 
 	var $name = 'Evaluations';
-	var $uses = array('Evaluation','Category','LetterGrade','Student');
+	var $uses = array('Evaluation','Category','LetterGrade','Student','Schedule');
 	
 	function index() {
 		if (!empty($this->data)) {
@@ -58,8 +58,16 @@ class EvaluationsController extends AppController {
 			}
 		}
 		
-		//CHECK IF TEACHER ALREADY EVALUATED
+		//Evaluation validation
 		if($teacher_id&&$student_id){
+			
+			
+			$isAvailable =  $this->Schedule->isAvailable($student['Student']['section_id']);
+			if($isAvailable){
+				//$this->Session->setFlash(__('Oops! Teacher already evaluated.', true));
+				$this->redirect(array('controller'=>'evaluations','action' => 'add?select=notime'));
+			}
+			//CHECK IF TEACHER ALREADY EVALUATED
 			$result = $this->Evaluation->find('all',array(
 											'recursive'=>-1,
 											'conditions'=>array(
@@ -68,7 +76,7 @@ class EvaluationsController extends AppController {
 											)));
 			if($result){
 				//$this->Session->setFlash(__('Oops! Teacher already evaluated.', true));
-				$this->redirect(array('controller'=>'evaluations','action' => 'add?select=!'));
+				$this->redirect(array('controller'=>'evaluations','action' => 'add?select=evaluated'));
 			}
 		}else{
 			if(!isset($_GET['select'])){
