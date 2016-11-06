@@ -26,11 +26,11 @@ class UsersController extends AppController {
 				if($this->User->save($this->data)){
 					$this->data['Student']['user_id']=$this->User->id;
 					$this->Student->save($this->data['Student']);
-					$this->Session->setFlash(__('User created', true));	
+					$this->Session->setFlash(__('Please login', true));	
 					
 					$data = $this->User->read(); 
-					$this->Auth->login($data);
-					$this->redirect('/');
+					//$this->Auth->login($data);
+					$this->redirect('/login');
 				}
 			}
 		}

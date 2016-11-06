@@ -4,7 +4,7 @@
 	<div id="Form" class="column">
 	<?php
 		echo $this->Form->create('Teachers');
-		echo $this->Form->input('teacher_id');
+		echo $this->Form->input('teacher_id',array('empty'=>'Select one'));
 		echo $this->Form->submit('View');
 		
 		echo $this->Form->end();
@@ -42,3 +42,12 @@
 		?>
 	</div>
 </div>
+<style type="text/css">
+#TeacherEditForm div.submit{
+	display:inline-block;
+}
+#TeacherEditForm div.submit:last-child {
+    display: block;
+    float: right;
+}
+</style>
