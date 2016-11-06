@@ -2,7 +2,7 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
-
+	var $uses = array('User','Student');
 	function beforeFilter(){ 
 		parent::beforeFilter();
 		$this->Auth->userModel = 'User'; 
@@ -21,7 +21,11 @@ class UsersController extends AppController {
 		if ($this->data) {
 			if ($this->data['User']['password'] == $this->Auth->password($this->data['User']['confirm_password'])) {
 				$this->User->create();
-				if($this->User->saveAll($this->data)){
+				$this->User->recursive=0;
+				$this->Student->recursive=0;
+				if($this->User->save($this->data)){
+					$this->data['Student']['user_id']=$this->User->id;
+					$this->Student->save($this->data['Student']);
 					$this->Session->setFlash(__('User created', true));	
 					
 					$data = $this->User->read(); 
