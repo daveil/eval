@@ -1,9 +1,9 @@
 <?php
-/* Teacher Test cases generated on: 2016-07-03 05:14:48 : 1467515688*/
+/* Teacher Test cases generated on: 2016-11-06 07:31:36 : 1478388696*/
 App::import('Model', 'Teacher');
 
 class TeacherTestCase extends CakeTestCase {
-	var $fixtures = array('app.teacher', 'app.evaluation', 'app.student', 'app.evaluation_detail', 'app.question', 'app.category', 'app.evaluation_result');
+	var $fixtures = array('app.teacher', 'app.section', 'app.student', 'app.evaluation', 'app.evaluation_detail', 'app.question', 'app.category', 'app.evaluation_result');
 
 	function startTest() {
 		$this->Teacher =& ClassRegistry::init('Teacher');

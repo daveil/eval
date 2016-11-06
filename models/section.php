@@ -1,12 +1,25 @@
 <?php
-class User extends AppModel {
-	var $name = 'User';
+class Section extends AppModel {
+	var $name = 'Section';
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $hasMany = array(
 		'Student' => array(
 			'className' => 'Student',
-			'foreignKey' => 'user_id',
+			'foreignKey' => 'section_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Teacher' => array(
+			'className' => 'Teacher',
+			'foreignKey' => 'section_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

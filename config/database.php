@@ -18,9 +18,10 @@ class DATABASE_CONFIG {
 		'database' => 'eval',
 	);
 	function __construct() {
-		if($_SERVER['HTTP_HOST']!='localhost'){
-			$this->default =  $this->remote;
-		}
+		if(isset($_SERVER['HTTP_HOST']))
+			if($_SERVER['HTTP_HOST']!='localhost'){
+				$this->default =  $this->remote;
+			}
 	}
 }
 ?>
