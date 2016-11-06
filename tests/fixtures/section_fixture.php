@@ -1,5 +1,5 @@
 <?php
-/* Section Fixture generated on: 2016-11-06 07:31:28 : 1478388688 */
+/* Section Fixture generated on: 2016-11-06 08:26:14 : 1478391974 */
 class SectionFixture extends CakeTestFixture {
 	var $name = 'Section';
 
@@ -16,8 +16,8 @@ class SectionFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor ',
-			'created' => '2016-11-06 07:31:28',
-			'modified' => '2016-11-06 07:31:28'
+			'created' => '2016-11-06 08:26:14',
+			'modified' => '2016-11-06 08:26:14'
 		),
 	);
 }
