@@ -20,6 +20,26 @@
 		<h2 style="margin-left: 90px; font-size: xx-large;"> Welcome <?php echo $user['User']['first_name'].' '.$user['User']['last_name']?>!</h2>
 		<br/>
 	</div>
+	<div class="home index" style="margin:0 auto;">
+		<?php  $scheds =  $this->requestAction('schedules?active'); ?>
+			<table cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr>
+						<th colspan="2">Online Faculty Evaluation Schedule</th>
+					</tr>
+					<?php foreach($scheds as $sched):?>
+						<tr> 
+							<td colspan="2"><?php echo $sched['Section']['name'];?></td>
+						</tr>
+						<tr> 
+							<td>Start: <?php echo date('M d Y h:i A',strtotime($sched['Schedule']['start_sched']));?></td>
+							<td>End: <?php echo date('M d Y h:i A',strtotime($sched['Schedule']['end_sched']));?></td>
+						</tr>
+					<?php endforeach;?>
+				</tbody>
+			</table>
+		<br />
+	</div>
 	<?php if($user['User']['is_admin'] == 1):?>
 		<!--admin menu -->
 		<div class="actions" style="margin-left: 96px;margin-top: 50px;">
