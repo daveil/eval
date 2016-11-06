@@ -10,8 +10,12 @@
 		echo $this->Form->input('User.middle_name');
 		echo $this->Form->input('age');
 		echo $this->Form->input('section_id');
-		echo $this->Form->input('gender',array('options'=>array('m'=>'Male','f'=>'Female'),'empty'=>'Select one'));
-	?>'
+		echo $this->Form->input('gender', 
+					array(
+					'type'=>'radio',
+					'options'=>array('M'=>'Male','F'=>'Female'),
+					'class'=>'form-control'));
+	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>

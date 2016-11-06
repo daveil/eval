@@ -7,7 +7,11 @@
 		echo $this->Form->input('slug');
 		echo $this->Form->input('age');
 		echo $this->Form->input('section_id');
-		echo $this->Form->input('gender');
+		echo $this->Form->input('gender', 
+					array(
+					'type'=>'radio',
+					'options'=>array('M'=>'Male','F'=>'Female'),
+					'class'=>'form-control'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
