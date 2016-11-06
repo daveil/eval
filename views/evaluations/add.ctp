@@ -23,7 +23,7 @@
 	<div id="Form" class="column">
 <?php
 		echo $this->Form->create('Evaluation',array('action'=>'add'));
-		echo $this->Form->input('teacher_id');
+		echo $this->Form->input('teacher_id',array('empty'=>'Select one'));
 		echo $this->Form->input('select',array('type'=>'hidden'));
 		echo $this->Form->submit('Evaluate');
 		echo $this->Form->end();
