@@ -2,13 +2,7 @@
 class Teacher extends AppModel {
 	var $name = 'Teacher';
 	var $virtualFields= array('full_name'=>'CONCAT(Teacher.first_name," ",Teacher.last_name)');
-<<<<<<< HEAD
-	var $displayField ='full_name';
-	
-=======
     var $displayField ='full_name';
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
->>>>>>> origin/master
 
 	var $belongsTo = array(
 		'Section' => array(
