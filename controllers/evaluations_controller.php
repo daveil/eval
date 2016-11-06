@@ -58,14 +58,15 @@ class EvaluationsController extends AppController {
 		
 		//CHECK IF TEACHER ALREADY EVALUATED
 		if($teacher_id&&$student_id){
-			
-			$result = $this->Evaluation->find('all',array('conditions'=>array(
+			$result = $this->Evaluation->find('all',array(
+											'recursive'=>-1,
+											'conditions'=>array(
 												'Evaluation.teacher_id'=>$teacher_id,
 												'Evaluation.student_id'=>$student_id
 											)));
 			if($result){
-				$this->Session->setFlash(__('Oops! Teacher already evaluated.', true));
-				$this->redirect(array('controller'=>'evaluations','action' => 'add?select'));
+				//$this->Session->setFlash(__('Oops! Teacher already evaluated.', true));
+				$this->redirect(array('controller'=>'evaluations','action' => 'add?select=!'));
 			}
 		}else{
 			if(!isset($_GET['select'])){
@@ -86,7 +87,7 @@ class EvaluationsController extends AppController {
 			}
 			
 			
-			$students = $this->Evaluation->Student->find('list');
+			$students = array();//$this->Evaluation->Student->find('list');
 			$teachers = $this->Evaluation->Teacher->find('list');
 			//$categories = $this->Category->find('all',array('conditions'=>array('Category.for_masters'=>$teacher['Teacher']['is_master'])));
 			$categories = $this->Category->find('all');
