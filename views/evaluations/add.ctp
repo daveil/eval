@@ -28,6 +28,9 @@
 		echo $this->Form->submit('Evaluate');
 		echo $this->Form->end();
 ?>
+<?php if($_GET['select']=='!'):?>
+	<script type="text/javascript">alert('Oops! This teacher is already evaluated.');</script>
+<?php endif;?>
 </div>
 <h2>Select teacher and click <b>Evaluate</b>.</h2>
 </div>
