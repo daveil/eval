@@ -4,8 +4,15 @@ class SchedulesController extends AppController {
 	var $name = 'Schedules';
 
 	function index() {
-		$this->Schedule->recursive = 0;
-		$this->set('schedules', $this->paginate());
+		if($_GET['url']=='schedules?active'){
+			$conditions = array('Schedule.status'=>'active');
+			$schedules = $this->Schedule->find('all',compact('conditions'));
+			return $schedules;
+		}else{
+			$this->Schedule->recursive = 0;
+			$this->set('schedules', $this->paginate());
+		
+		}
 	}
 
 	function view($id = null) {
