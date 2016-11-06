@@ -1,8 +1,6 @@
 <?php
 class Student extends AppModel {
 	var $name = 'Student';
-	var $virtualFields= array('full_name'=>'CONCAT(User.first_name," ",User.last_name)');
-    var $displayField ='full_name';
 	var $belongsTo = array(
 		'User' => array(
 			'className' => 'User',

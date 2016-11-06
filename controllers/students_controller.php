@@ -2,7 +2,11 @@
 class StudentsController extends AppController {
 
 	var $name = 'Students';
-
+	function beforeFilter(){
+		$this->Student->virtualFields = array('full_name'=>'CONCAT(User.first_name," ",User.last_name)');
+		$this->Student->displayField = 'full_name';
+		parent::beforeFilter();
+	}
 	function index() {
 		$this->Student->recursive = 0;
 		$this->set('students', $this->paginate());
