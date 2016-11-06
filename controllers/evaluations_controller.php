@@ -65,7 +65,7 @@ class EvaluationsController extends AppController {
 			
 			
 			$isAvailable =  $this->Schedule->isAvailable($student['Student']['section_id']);
-			if($isAvailable){
+			if(!$isAvailable){
 				//$this->Session->setFlash(__('Oops! Teacher already evaluated.', true));
 				$this->redirect(array('controller'=>'evaluations','action' => 'add?select=notime'));
 			}
