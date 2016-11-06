@@ -2,7 +2,7 @@
 class EvaluationsController extends AppController {
 
 	var $name = 'Evaluations';
-	var $uses = array('Evaluation','Category','LetterGrade');
+	var $uses = array('Evaluation','Category','LetterGrade','Student','Schedule');
 	
 	function index() {
 		if (!empty($this->data)) {
@@ -25,7 +25,9 @@ class EvaluationsController extends AppController {
 				$this->set(compact('evaluation','results'));
 			}
 		}
-		$teachers = $this->Evaluation->Teacher->find('list');
+		$student = $this->Student->findByUserId($_SESSION['Auth']['User']['id']);
+		$filter_teacher = array('Teacher.section_id'=>$student['Student']['section_id']);
+		$teachers = $this->Evaluation->Teacher->find('list',array('conditions'=>$filter_teacher));
 		$this->set(compact('teachers'));
 	}
 
@@ -40,6 +42,8 @@ class EvaluationsController extends AppController {
 	function add() {
 		$select = false;
 		$teacher_id  = $student_id =null;
+		$student = $this->Student->findByUserId($_SESSION['Auth']['User']['id']);
+		$filter_teacher = array('Teacher.section_id'=>$student['Student']['section_id']);
 		if (!empty($this->data)) {
 			if(!isset($this->data['Evaluation']['select'])){
 				$this->Evaluation->create();
@@ -52,29 +56,39 @@ class EvaluationsController extends AppController {
 				}
 			}else{
 				$teacher_id = $this->data['Evaluation']['teacher_id'];
-				$student_id = $_SESSION['Auth']['User']['id'];
+				$student_id = $student['Student']['id'];
 			}
 		}
 		
-		//CHECK IF TEACHER ALREADY EVALUATED
+		//Evaluation validation
 		if($teacher_id&&$student_id){
 			
-			$result = $this->Evaluation->find('all',array('conditions'=>array(
+			
+			$isAvailable =  $this->Schedule->isAvailable($student['Student']['section_id']);
+			if($isAvailable){
+				//$this->Session->setFlash(__('Oops! Teacher already evaluated.', true));
+				$this->redirect(array('controller'=>'evaluations','action' => 'add?select=notime'));
+			}
+			//CHECK IF TEACHER ALREADY EVALUATED
+			$result = $this->Evaluation->find('all',array(
+											'recursive'=>-1,
+											'conditions'=>array(
 												'Evaluation.teacher_id'=>$teacher_id,
 												'Evaluation.student_id'=>$student_id
 											)));
 			if($result){
-				$this->Session->setFlash(__('Oops! Teacher already evaluated.', true));
-				$this->redirect(array('controller'=>'evaluations','action' => 'add?select'));
+				//$this->Session->setFlash(__('Oops! Teacher already evaluated.', true));
+				$this->redirect(array('controller'=>'evaluations','action' => 'add?select=evaluated'));
 			}
 		}else{
 			if(!isset($_GET['select'])){
 				$this->Session->setFlash(__('Oops! No selected teacher.', true));
 				$this->redirect(array('controller'=>'pages','action' => '/'));
 			}else{
-				$teachers = $this->Evaluation->Teacher->find('list');
+				$teachers = $this->Evaluation->Teacher->find('list',array('conditions'=>$filter_teacher));
 				$select = true;
 				$this->set(compact('teachers','select'));
+				
 			}
 		}
 			
@@ -86,8 +100,8 @@ class EvaluationsController extends AppController {
 			}
 			
 			
-			$students = $this->Evaluation->Student->find('list');
-			$teachers = $this->Evaluation->Teacher->find('list');
+			$students = array();//$this->Evaluation->Student->find('list');
+			$teachers = $this->Evaluation->Teacher->find('list',array('conditions'=>$filter_teacher));
 			//$categories = $this->Category->find('all',array('conditions'=>array('Category.for_masters'=>$teacher['Teacher']['is_master'])));
 			$categories = $this->Category->find('all');
 			$group_questions = array();
