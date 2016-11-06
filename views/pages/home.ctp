@@ -25,9 +25,23 @@
 			<table cellpadding="0" cellspacing="0">
 				<tbody>
 					<tr>
+						
+						<?php if($user['User']['is_admin'] == 1):?>
+						<th>Online Faculty Evaluation Schedule</th>
+						<th style="text-align:right;">
+							<?php echo $this->Html->link(__('Manage Schedules', true), 
+								array(
+										'controller' => 'schedules', 
+										'action' => 'index'
+									)); ?>
+						</th>
+						<?php else:?>
 						<th colspan="2">Online Faculty Evaluation Schedule</th>
+						<?php endif;?>
 					</tr>
-					<?php foreach($scheds as $sched):?>
+					<?php 
+						if(count($scheds)):
+							foreach($scheds as $sched):?>
 						<tr> 
 							<td colspan="2"><?php echo $sched['Section']['name'];?></td>
 						</tr>
@@ -35,7 +49,12 @@
 							<td>Start: <?php echo date('M d Y h:i A',strtotime($sched['Schedule']['start_sched']));?></td>
 							<td>End: <?php echo date('M d Y h:i A',strtotime($sched['Schedule']['end_sched']));?></td>
 						</tr>
-					<?php endforeach;?>
+					<?php 
+							endforeach;
+						else:
+					?>
+						<tr><td>No schedule yet.</td></tr>
+					<?php endif; ?>
 				</tbody>
 			</table>
 		<br />

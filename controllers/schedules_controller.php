@@ -2,10 +2,16 @@
 class SchedulesController extends AppController {
 
 	var $name = 'Schedules';
-
+	var $uses = array('Schedule','Student');
 	function index() {
 		if($_GET['url']=='schedules?active'){
 			$conditions = array('Schedule.status'=>'active');
+			$user = $_SESSION['Auth']['User'];
+			if(!$user['is_admin']){
+				$student  = $this->Student->findByUserId($user['id']);
+				$section_id = $student['Student']['section_id'];
+				$conditions['Schedule.section_id']=$section_id;
+			}
 			$schedules = $this->Schedule->find('all',compact('conditions'));
 			return $schedules;
 		}else{
