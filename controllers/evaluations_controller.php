@@ -25,7 +25,9 @@ class EvaluationsController extends AppController {
 				$this->set(compact('evaluation','results'));
 			}
 		}
-		$teachers = $this->Evaluation->Teacher->find('list');
+		$student = $this->Student->findByUserId($_SESSION['Auth']['User']['id']);
+		$filter_teacher = array('Teacher.section_id'=>$student['Student']['section_id']);
+		$teachers = $this->Evaluation->Teacher->find('list',array('conditions'=>$filter_teacher));
 		$this->set(compact('teachers'));
 	}
 

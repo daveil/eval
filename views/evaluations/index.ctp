@@ -6,7 +6,7 @@
 	<div id="Form" class="column">
 	<?php
 		echo $this->Form->create('Evaluation');
-		echo $this->Form->input('teacher_id');
+		echo $this->Form->input('teacher_id',array('empty'=>'Select one'));
 		echo $this->Form->submit('View');
 		echo $this->Form->end();
 	?>
