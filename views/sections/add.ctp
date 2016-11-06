@@ -1,6 +1,6 @@
 <div class="sections form">
 <?php echo $this->Form->create('Section');?>
-	<fieldset>
+	<fieldset style="margin-top: -131px;">
 		<legend><?php __('Add Section'); ?></legend>
 	<?php
 		echo $this->Form->input('name');

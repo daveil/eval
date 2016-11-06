@@ -46,7 +46,7 @@
 		<li><?php echo $this->Html->link(__('List Categories', true), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Category', true), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Evaluation Results', true), array('controller' => 'evaluation_results', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Evaluation Result', true), array('controller' => 'evaluation_results', 'action' => 'add')); ?> </li>
+		
 		<li><?php echo $this->Html->link(__('List Questions', true), array('controller' => 'questions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Question', true), array('controller' => 'questions', 'action' => 'add')); ?> </li>
 	</ul>
@@ -85,11 +85,7 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Evaluation Result', true), array('controller' => 'evaluation_results', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
+	
 </div>
 <div class="related">
 	<h3><?php __('Related Questions');?></h3>

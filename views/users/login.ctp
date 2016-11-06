@@ -3,7 +3,7 @@
 
 <div class="registrations form">
 <?php echo $this->Form->create('User');?>
-	<fieldset>
+	<fieldset style="margin-top: -154px;margin-right: -500px;margin-left: -24px;">
 		<legend><?php __('Please Sign In'); ?></legend>
 			 <?php
 				echo $this->Session->flash('auth').'<br>';

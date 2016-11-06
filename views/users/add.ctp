@@ -1,6 +1,6 @@
 <div class="users form">
 <?php echo $this->Form->create('User');?>
-	<fieldset>
+	<fieldset style="margin-top: -144px;">
 		<legend><?php __('Add User'); ?></legend>
 	<?php
 		echo $this->Form->input('username');

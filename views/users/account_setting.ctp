@@ -1,7 +1,7 @@
 
 <div class="registrations form">
 <?php echo $this->Form->create('User',array('action'=>'account_setting'));?>
-	<fieldset>
+	<fieldset style="margin-top: -201px;">
 		<legend><?php __('Edit Account'); ?></legend>
 		<?php
 			echo $this->Form->input('id',array('value'=>$data['User']['id']));

@@ -1,5 +1,5 @@
 <div class="categories index">
-	<h2><?php __('Categories');?></h2>
+	<h2 style="margin-top: -127px;"><?php __('Categories');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
@@ -24,7 +24,7 @@
 		<td><?php echo $category['Category']['name']; ?>&nbsp;</td>
 		<td><?php echo $category['Category']['code']; ?>&nbsp;</td>
 		<td><?php echo $category['Category']['precentage']; ?>&nbsp;</td>
-		<!-- <td><?php echo $category['Category']['for_masters']; ?>&nbsp;</td> -->
+		
 		<td><?php echo $category['Category']['created']; ?>&nbsp;</td>
 		<td><?php echo $category['Category']['modified']; ?>&nbsp;</td>
 		<td class="actions">
@@ -54,7 +54,7 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('New Category', true), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Evaluation Results', true), array('controller' => 'evaluation_results', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Evaluation Result', true), array('controller' => 'evaluation_results', 'action' => 'add')); ?> </li>
+		
 		<li><?php echo $this->Html->link(__('List Questions', true), array('controller' => 'questions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Question', true), array('controller' => 'questions', 'action' => 'add')); ?> </li>
 	</ul>

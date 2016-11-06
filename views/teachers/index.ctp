@@ -1,5 +1,5 @@
 <?php echo $this->Html->script('teachers',array('inline'=>false)); ?>
-<h2><?php __('Teachers');?></h2>
+<h2 style="margin-left: 174px;"><?php __('Teachers');?></h2>
 <div class="two-columns">
 	<div id="Form" class="column">
 	<?php
@@ -12,7 +12,7 @@
 	</div>
 	<div id="Teacher" class="column">
 		<?php echo $this->Form->create('Teacher',array('action'=>'edit'));?>
-		<fieldset>
+		<fieldset style="margin-top: -65px;">
 			<legend><?php __('Teacher'); ?></legend>
 		<?php
 			echo $this->Form->input('id');
@@ -31,6 +31,7 @@
 		<?php //echo $this->Form->input('is_master', array('type'=>'checkbox'));?>
 		</fieldset>
 		<!-- comment  -->
+		<div class="submit" style="margin-top: -60px;margin-right: 371px;">
 		<?php 
 			if(isset($this->data)):
 			echo $this->Form->submit('Delete',array('id'=>'DeleteButton'));
