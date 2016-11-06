@@ -85,6 +85,20 @@
 									)); ?>
 				</li>
 				<li>
+					<?php echo $this->Html->link(__('Section', true), 
+								array(
+										'controller' => 'sections', 
+										'action' => 'index'
+									)); ?>
+				</li>
+				<li>
+					<?php echo $this->Html->link(__('Schedule', true), 
+								array(
+										'controller' => 'schedules', 
+										'action' => 'index'
+									)); ?>
+				</li>
+				<li>
 					<?php echo $this->Html->link(__('Contents', true), 
 								array(
 										'controller' => 'contents', 
