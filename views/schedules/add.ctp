@@ -1,4 +1,5 @@
 <div class="schedules form">
+<form action="/eval/schedules/add" id="ScheduleAddForm" method="post" accept-charset="utf-8" style="width: 100%;">
 <?php echo $this->Form->create('Schedule');?>
 	<fieldset style="margin-top: -140px;">
 		<legend><?php __('Add Schedule'); ?></legend>

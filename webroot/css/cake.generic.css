@@ -232,9 +232,9 @@ form {
 }
 fieldset {
 	border: 1px solid #ccc;
-	margin-top: -19em;
+	margin-top: -1em;
 	margin-left: -166px;
-	margin-right: 150px;
+	margin-right: -173px;
 	padding: 16px 20px;
 }
 fieldset legend {
@@ -294,7 +294,7 @@ input, textarea,select {
 }
 select {
 	clear: both;
-	width:127px;
+	width:280px;
 	font-size: 120%;
 	vertical-align: text-bottom;
 }

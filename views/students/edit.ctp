@@ -1,6 +1,6 @@
 <div class="students form">
 <?php echo $this->Form->create('Student');?>
-	<fieldset>
+	<fieldset style="margin-top: -140px;">
 		<legend><?php __('Edit Student'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
@@ -25,9 +25,10 @@
 
 		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('Student.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('Student.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Students', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Sections', true), array('controller' => 'sections', 'action' => 'index')); ?> </li>
+		<!--<li><?php echo $this->Html->link(__('List Sections', true), array('controller' => 'sections', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Section', true), array('controller' => 'sections', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Evaluations', true), array('controller' => 'evaluations', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Evaluation', true), array('controller' => 'evaluations', 'action' => 'add')); ?> </li>
+		-->
 	</ul>
 </div>

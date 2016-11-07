@@ -16,8 +16,9 @@ form div {
 }
 </style>
 <div class="contents form">
+<form action="/eval/contents/add" id="ContentAddForm" method="post" accept-charset="utf-8" style="width: 129%;">
 <?php echo $this->Form->create('Content');?>
-	<fieldset>
+	<fieldset style="margin-top: -111px;margin-left: -162px;">
 		<legend><?php __('Add Content'); ?></legend>
 		<?php 
 			echo $this->Form->input('title');
@@ -30,13 +31,15 @@ form div {
 	
 		
 	</fieldset>
-<?php echo $this->Form->end(__('Submit', true));?>
+	<div class="submit">
+	
+	<input type="submit" value="Submit" style="margin-left: -164px";>
 </div>
-<div class="actions">
+<div class="actions" style="margin-left: -164px;">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Html->link(__('List Contents', true), array('action' => 'index'));?></li>
+		<li style="margin-left: -20px;"><?php echo $this->Html->link(__('List Contents', true), array('action' => 'index'));?></li>
 	</ul>
 </div>
 <?php echo $this->Html->script('contents',array('inline'=>false));?>

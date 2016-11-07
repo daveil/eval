@@ -4,7 +4,7 @@
 <h2><?php __('Evaluation Results');?></h2>
 <div class="three-columns">
 	<div id="Form" class="column">
-	  <form action="/eval/evaluations" id="EvaluationIndexForm" method="post" accept-charset="utf-8" style="margin-left: -180px;margin-top: 50px;">
+	  <form action="/eval/evaluations" id="EvaluationIndexForm" method="post" accept-charset="utf-8" style="margin-left: -180px;margin-top: -35px;">
 	<?php
 		echo $this->Form->create('Evaluation');
 		echo $this->Form->input('teacher_id',array('empty'=>'Select one'));

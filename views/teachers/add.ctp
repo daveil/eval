@@ -1,6 +1,6 @@
 <div class="teachers form">
 <?php echo $this->Form->create('Teacher');?>
-	<fieldset>
+	<fieldset style="margin-top: -120px;">
 		<legend><?php __('Add Faculty'); ?></legend>
 	<?php
 		echo $this->Form->input('last_name');
@@ -17,6 +17,7 @@
 
 		<li><?php echo $this->Html->link(__('List Teachers', true), array('action' => 'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Evaluations', true), array('controller' => 'evaluations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Evaluation', true), array('controller' => 'evaluations', 'action' => 'add')); ?> </li>
+		<!-- <li><?php echo $this->Html->link(__('New Evaluation', true), array('controller' => 'evaluations', 'action' => 'add')); ?> </li>
+		-->
 	</ul>
 </div>

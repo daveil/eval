@@ -1,12 +1,12 @@
 <div class="students index">
-	<h2><?php __('Students');?></h2>
+	<h2 style="margin-top: -150px;"><?php __('Students');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('full_name');?></th>
 			<th><?php echo $this->Paginator->sort('age');?></th>
 			<th><?php echo $this->Paginator->sort('section_id');?></th>
-			<th><?php echo $this->Paginator->sort('gender');?></th>
+			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -49,13 +49,17 @@
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
 </div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
+
+	<!--<h3><?php __('Actions'); ?></h3>
+	-->
+	
 	<ul>
-		<li><?php echo $this->Html->link(__('New Student', true), array('action' => 'add')); ?></li>
+		<!-- <li><?php echo $this->Html->link(__('New Student', true), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Sections', true), array('controller' => 'sections', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Section', true), array('controller' => 'sections', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Evaluations', true), array('controller' => 'evaluations', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Evaluation', true), array('controller' => 'evaluations', 'action' => 'add')); ?> </li>
+		-->
 	</ul>
+	
 </div>
