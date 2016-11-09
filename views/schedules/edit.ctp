@@ -1,6 +1,6 @@
 <div class="schedules form">
 <?php echo $this->Form->create('Schedule');?>
-	<fieldset>
+	<fieldset style="margin-top: -145px;margin-right: -350px;">
 		<legend><?php __('Edit Schedule'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
@@ -10,9 +10,12 @@
 		echo $this->Form->input('status',array('empty'=>'Select one','options'=>array('active'=>'Active','inactive'=>'Inactive')));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit', true));?>
+	<div class="submit">
+		<input type="submit" value="Submit" style="margin-left: 348px; margin-top: -79px;">
+	<!--<?php echo $this->Form->end(__('Submit', true));?>
+	-->
 </div>
-<div class="actions">
+<div class="actions" style="margin-top: 21px;margin-left: -185px;">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
 
