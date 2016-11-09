@@ -50,9 +50,9 @@ class AppController extends Controller {
 	public $loggedIn = false;
 	
 	function beforeFilter(){
-		if ($this->params['controller'] == 'pages') {
+		//if ($this->params['controller'] == 'pages') {
 			$this->Auth->allow('*'); 
-		}
+		//}
 		
 		$user = $this->Auth->user();
 		$this->set('user', $user);
