@@ -1,10 +1,12 @@
 
 <?php if(!$user):?>	
-<div class="home index" style="margin-left: 85fpx;margin-top: 20px;" >
+<div class="home index" style="margin-left: 85px;margin-top: 20px;" >
 	<h2>Welcome user!</h2>
-	<br/>
+	
 	<h3>Please Log In</h3>
-
+<center>
+	<img src="/eval/img/sci.jpg" alt style="margin-top: -10px;">
+</center>
 	
 </div>
 <div class="actions" style="margin-left: 90px;margin-top: 20px;">
@@ -17,11 +19,14 @@
 
 <?php else:?>
 	<div class="home index">
-	<h2 style="margin-left: 90px;margin-top: -125px;font-size: xx-large;"> Welcome <?php echo $user['User']['first_name'].' '.$user['User']['last_name']?>!</h2>
+	<h2 style="margin-left: 90px;margin-top: -158px;font-size: xx-large;"> Welcome <?php echo $user['User']['first_name'].' '.$user['User']['last_name']?>!</h2>
 	</div>
 	<?php if($user['User']['is_admin'] == 1):?>
+	<center>
+	<img src="/eval/img/sci.jpg" alt style="margin-top: -130px;">
+</center>	
 		<!--admin menu -->
-		<div class="actions" style="margin-left: 90px;margin-top: 40px;">
+		<div class="actions" style="margin-left: 175px;margin-top: 40px;">
 			<ul style="margin-left: -82px;">
 				<li>
 					<?php echo $this->Html->link(__('Faculty', true), 
@@ -65,14 +70,15 @@
 										'action' => 'index'
 									)); ?>
 				</li>
-				<li>
+				
+				<!-- <li>
 					<?php echo $this->Html->link(__('Logout', true), 
 								array(
 										'controller' => 'users', 
 										'action' => 'logout'
 									)); ?>
 				</li>
-				
+				-->
 			
 		
 			</ul> 
@@ -105,8 +111,11 @@
 		-->
 		</div>
 	<?php else:?>
+	<center>
+	<img src="/eval/img/sci.jpg" alt style="margin-top: -130px;">
+</center>
 		<!--student menu -->
-		<div class="actions" style="margin-left: 200px;margin-top: 29px;" >
+		<div class="actions" style="margin-left: 280px;margin-top: 29px;" >
 			<ul>
 				<li>
 					<?php echo $this->Html->link(__('Profile', true), 
@@ -149,9 +158,9 @@
 				<li>
 					<?php echo $this->Html->link(__('About Us', true), array('controller' => 'pages', 'action' => 'about-us')); ?>
 				</li>
-				<li> 
+				<!-- <li> 
 				<?php echo $this->Html->link(__('Logout', true), array('controller' => 'users', 'action' => 'logout')); ?> 
-				</li>
+				</li> -->
 			</ul>
 		<!--	
 			<ul>
@@ -226,9 +235,9 @@
 </div>
 <?php endif;?>
 -->
-<center>
-	<img src="/eval/img/sci.jpg" alt style="margin-top: -93px;">
-</center>
+<!--<center>
+	<img src="/eval/img/sci.jpg" alt style="margin-top: -15px;">
+</center>-->
 <br>	
 <?php if($user):?>
 <div class="home index" style="margin:0 auto;">

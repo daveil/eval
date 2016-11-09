@@ -10,7 +10,10 @@ class UsersController extends AppController {
     } 
 	
 	function login() {
-			
+			$user = $this->Auth->user();
+			if(isset($user['User'])){
+				 $this->redirect('/');
+			}
     }
 
     function logout() {
