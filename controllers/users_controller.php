@@ -4,9 +4,9 @@ class UsersController extends AppController {
 	var $name = 'Users';
 	var $uses = array('User','Student');
 	function beforeFilter(){ 
-		parent::beforeFilter();
 		$this->Auth->userModel = 'User'; 
 		$this->Auth->allow(array('register','login','check','logout'));	
+		return parent::beforeFilter();
     } 
 	
 	function login() {
