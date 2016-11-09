@@ -21,6 +21,7 @@
 <h2><?php __('Teacher Evaluation');?></h2>
 <div class="three-columns">
 	<div id="Form" class="column">
+	<form action="/eval/evaluations/add" id="EvaluationAddForm" method="post" accept-charset="utf-8" style="margin-top: -21px;margin-left: -170px;">
 <?php
 		echo $this->Form->create('Evaluation',array('action'=>'add'));
 		echo $this->Form->input('teacher_id',array('empty'=>'Select one'));
@@ -41,7 +42,7 @@
 	<?php echo $this->Html->script('evaluation',array('inline'=>false)); ?>
 	<div class="evaluations form">
 	<?php echo $this->Form->create('Evaluation');?>
-		<h2>Evaluation: <?php echo $teacher_name;?></h2>
+		<h2 style="margin-top: -208px;">Evaluation: <?php echo $teacher_name;?></h2>
 		<?php 
 			echo $this->Form->input('student_id',array('type'=>'hidden','value'=>$student_id));
 			echo $this->Form->input('teacher_id',array('type'=>'hidden','value'=>$teacher_id));

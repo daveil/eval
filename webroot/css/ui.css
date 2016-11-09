@@ -19,7 +19,7 @@
 	float:none;
 }
 #content>div{
-	padding-top:30px;
+	padding-top:20px;
 	margin-top:10px;
 	border-left:none;
 	margin-bottom: 1px;
@@ -31,7 +31,7 @@ div.actions{
 }
 div.actions ul>li{
 	display:inline-block;
-	width:145px;
+	width:174px;
 }
 div.actions ul>li a{
 	border-radius:0;
@@ -112,7 +112,7 @@ div.two-columns>div.column{
 }
 div.three-columns>div.column>*{width:100%;}
 #content .form,#content .index{
-	margin-top:50px;
+	margin-top:184px;
 }
 #flashMessage{
 	margin-top:80px !important;

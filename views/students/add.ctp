@@ -1,4 +1,5 @@
 <div class="students form">
+<form action="/eval/students/add" id="StudentAddForm" method="post" accept-charset="utf-8" style="margin-top: 130px;">
 <?php echo $this->Form->create('Student');?>
 	<fieldset>
 		<legend><?php __('Add Student'); ?></legend>

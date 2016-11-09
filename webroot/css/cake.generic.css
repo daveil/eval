@@ -228,11 +228,13 @@ form {
 	clear: both;
 	margin-right: 20px;
 	padding-left: 160px;
-	width: 95%;
+	width: 50%;
 }
 fieldset {
 	border: 1px solid #ccc;
-	margin-bottom: 1em;
+	margin-top: -1em;
+	margin-left: -166px;
+	margin-right: -173px;
 	padding: 16px 20px;
 }
 fieldset legend {
@@ -242,7 +244,9 @@ fieldset legend {
 	font-weight: bold;
 }
 fieldset fieldset {
-	margin-top: 0px;
+	margin-top: -14px;
+	margin-left: -1px;
+	margin-right: 13px;
 	margin-bottom: 20px;
 	padding: 16px 10px;
 }
@@ -256,7 +260,7 @@ fieldset fieldset div {
 }
 form div {
 	clear: both;
-	margin-bottom: 1em;
+	margin-bottom: 0em;
 	padding: .5em;
 	vertical-align: text-top;
 }
@@ -290,6 +294,7 @@ input, textarea,select {
 }
 select {
 	clear: both;
+	width:280px;
 	font-size: 120%;
 	vertical-align: text-bottom;
 }

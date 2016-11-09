@@ -1,6 +1,6 @@
 
-<?php if(!$user):?>
-<div class="home index" style="margin-left: 85px;margin-top: 20px;" >
+<?php if(!$user):?>	
+<div class="home index" style="margin-left: 85fpx;margin-top: 20px;" >
 	<h2>Welcome user!</h2>
 	<br/>
 	<h3>Please Log In</h3>
@@ -17,13 +17,12 @@
 
 <?php else:?>
 	<div class="home index">
-		<h2 style="margin-left: 90px; font-size: xx-large;"> Welcome <?php echo $user['User']['first_name'].' '.$user['User']['last_name']?>!</h2>
-		<br/>
+	<h2 style="margin-left: 90px;margin-top: -125px;font-size: xx-large;"> Welcome <?php echo $user['User']['first_name'].' '.$user['User']['last_name']?>!</h2>
 	</div>
 	<?php if($user['User']['is_admin'] == 1):?>
 		<!--admin menu -->
-		<div class="actions" style="margin-left: 90px;margin-top: 50px;">
-			<ul>
+		<div class="actions" style="margin-left: 90px;margin-top: 40px;">
+			<ul style="margin-left: -82px;">
 				<li>
 					<?php echo $this->Html->link(__('Faculty', true), 
 								array(
@@ -53,9 +52,9 @@
 									)); ?>
 				</li>
 				<li>
-					<?php echo $this->Html->link(__('Schedule', true), 
+					<?php echo $this->Html->link(__('Student', true), 
 								array(
-										'controller' => 'schedules', 
+										'controller' => 'students', 
 										'action' => 'index'
 									)); ?>
 				</li>
@@ -107,7 +106,7 @@
 		</div>
 	<?php else:?>
 		<!--student menu -->
-		<div class="actions" style="margin-left: 94px;margin-top: 50px;" >
+		<div class="actions" style="margin-left: 200px;margin-top: 29px;" >
 			<ul>
 				<li>
 					<?php echo $this->Html->link(__('Profile', true), 
@@ -228,11 +227,9 @@
 <?php endif;?>
 -->
 <center>
-
-<?php
-	echo $this->Html->image('sci.jpg');
-?>
+	<img src="/eval/img/sci.jpg" alt style="margin-top: -93px;">
 </center>
+<br>
 <div class="home index" style="margin:0 auto;">
 		<?php  $scheds =  $this->requestAction('schedules?active'); ?>
 			<table cellpadding="0" cellspacing="0">

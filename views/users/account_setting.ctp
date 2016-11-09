@@ -1,7 +1,7 @@
 
 <div class="registrations form">
 <?php echo $this->Form->create('User',array('action'=>'account_setting'));?>
-	<fieldset>
+	<fieldset style="margin-top: -201px;margin-right: -347px;margin-left: 142px;">
 		<legend><?php __('Edit Account'); ?></legend>
 		<?php
 			echo $this->Form->input('id',array('value'=>$data['User']['id']));
@@ -51,9 +51,11 @@
 		</div>
 		
 	</fieldset>
+	<div style="margin-left:133px;">
 	<?php echo $this->Form->submit('Submit', array('id'=>'SubmitButton','disabled'=>'disabled'));?>
 	<?php echo $this->Form->end();?>
 </div>
+	</div>
 	
 	
 <div id="LoginUser" style="display:none"><?php echo $data['User']['username'];?></div>

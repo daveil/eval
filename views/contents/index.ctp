@@ -1,5 +1,5 @@
 <div class="contents index">
-	<h2><?php __('Contents');?></h2>
+	<h2 style="margin-top: -120px;"><?php __('Contents');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
