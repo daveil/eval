@@ -2,7 +2,8 @@
 <?php echo $this->Html->script('register',array('inline'=>false)); ?>
 <div class="registrations form">
 <?php echo $this->Form->create('User',array('action'=>'register'));?>
-	<fieldset>
+	<fieldset style="margin-top: -214px;">
+		
 		<legend><?php __('Register'); ?></legend>
 		<?php
 			echo $this->Form->input('username',array('placeholder'=>'Username','required'=>'required'));

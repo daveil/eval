@@ -8,25 +8,32 @@ class EvaluationsController extends AppController {
 		if (!empty($this->data)) {
 			//$this->Evaluation->recursive =2;
 			//$evaluation = $this->Evaluation->findByTeacherId($this->data['Evaluation']['teacher_id']);
-			$evaluation = $this->data;
-			$results = $this->Evaluation->getAverageResult($this->data['Evaluation']['teacher_id']);
-			if(!empty($evaluation)){
-				foreach($results as $k => $r){
-					$results[$k]['0']['letter_score'] = $this->LetterGrade->getLetterEquivalent($results[$k]['0']['average_score']);
-					if($results[$k]['Category']['precentage']){
-						$perCatPercentage = ($results[$k]['0']['average_result']/($results[$k]['Category']['precentage']/10))*10;
-						$results[$k]['0']['letter_result'] = $this->LetterGrade->getLetterEquivalent($perCatPercentage);	
+			if ($this->data['Evaluation']['teacher_id']){
+				$evaluation = $this->data;
+				$results = $this->Evaluation->getAverageResult($this->data['Evaluation']['teacher_id']);
+				if(!empty($evaluation)){
+					foreach($results as $k => $r){
+						$results[$k]['0']['letter_score'] = $this->LetterGrade->getLetterEquivalent($results[$k]['0']['average_score']);
+						if($results[$k]['Category']['precentage']){
+							$perCatPercentage = ($results[$k]['0']['average_result']/($results[$k]['Category']['precentage']/10))*10;
+							$results[$k]['0']['letter_result'] = $this->LetterGrade->getLetterEquivalent($perCatPercentage);	
+						}
+						//pr($results[$k]['0']['average_result'].'/'.($results[$k]['Category']['precentage']/10).'='.($results[$k]['0']['average_result']/($results[$k]['Category']['precentage']/10))*10);
+						
 					}
-					//pr($results[$k]['0']['average_result'].'/'.($results[$k]['Category']['precentage']/10).'='.($results[$k]['0']['average_result']/($results[$k]['Category']['precentage']/10))*10);
+					//pr($results);exit;
 					
+					$this->set(compact('evaluation','results'));
 				}
-				//pr($results);exit;
-				
-				$this->set(compact('evaluation','results'));
+			}else{
+				$this->Session->setFlash('Select teacher');
+				$this->redirect(array('action'=>'index'));
 			}
 		}
 		$student = $this->Student->findByUserId($_SESSION['Auth']['User']['id']);
 		$filter_teacher = array('Teacher.section_id'=>$student['Student']['section_id']);
+		if($_SESSION['Auth']['User']['is_admin'])
+			$filter_teacher = array();
 		$teachers = $this->Evaluation->Teacher->find('list',array('conditions'=>$filter_teacher));
 		$this->set(compact('teachers'));
 	}
