@@ -57,6 +57,7 @@ class Evaluation extends AppModel {
 						, `Teacher`.`gender`
 						, ROUND( AVG(`evaluations`.`score`),2) AS average_score
 						, ROUND(AVG(`evaluation_results`.`score`),2) AS average_result
+						, `evaluation_results`.`category_id` AS category_id
 						, Category.name
 						, Category.precentage
 					FROM

@@ -37,6 +37,7 @@
 		<div id="header">
 			<h1 style="font-size: x-large;"><?php echo $this->Html->link(__('Lipa City National Science High School', true), '/'); ?></h1>
 			<?php if($user):?>
+			<span id="user">
 			<?php echo $user['User']['username'];?>
 			<?php echo $this->Html->link(__('Logout', true), 
 								array(
@@ -45,6 +46,7 @@
 									),array('style'=>'color:white !important;')); ?>
 				
 			<?php endif;?>
+			</span>
 		</div>
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>

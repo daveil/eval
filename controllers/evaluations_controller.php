@@ -179,4 +179,26 @@ class EvaluationsController extends AppController {
 			$this->set(compact('evaluation','results'));
 		}
 	}
+	function summary(){
+		$teachers  =  $this->Teacher->find('list');
+		$evaluations = array();
+		foreach($teachers as $teacher_id=>$name){
+			$results = $this->Evaluation->getAverageResult($teacher_id);
+			foreach($results as $k => $r){
+				$results[$k]['0']['letter_score'] = $this->LetterGrade->getLetterEquivalent($results[$k]['0']['average_score']);
+				if($results[$k]['Category']['precentage']){
+					$perCatPercentage = ($results[$k]['0']['average_result']/($results[$k]['Category']['precentage']/10))*10;
+					$results[$k]['0']['letter_result'] = $this->LetterGrade->getLetterEquivalent($perCatPercentage);	
+				}
+				//pr($results[$k]['0']['average_result'].'/'.($results[$k]['Category']['precentage']/10).'='.($results[$k]['0']['average_result']/($results[$k]['Category']['precentage']/10))*10);
+				
+			}
+			array_push($evaluations,$results);
+		}
+		$categories =  $this->Category->find('list',array('fields'=>array('id','code')));
+		$this->set(compact('evaluations','categories'));
+	}
+	function summary_report(){
+		$this->summary();
+	}
 }
