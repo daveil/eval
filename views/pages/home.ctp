@@ -26,7 +26,7 @@
 	<img src="/eval/img/sci.jpg" alt style="margin-top: -130px;">
 </center>	
 		<!--admin menu -->
-		<div class="actions" style="margin-left: 175px;margin-top: 40px;">
+		<div class="actions" style="margin-left: 100px;margin-top: 40px;">
 			<ul style="margin-left: -82px;">
 				<li>
 					<?php echo $this->Html->link(__('Faculty', true), 
@@ -47,6 +47,13 @@
 								array(
 										'controller' => 'evaluations', 
 										'action' => 'index'
+									)); ?>
+				</li>
+				<li>
+					<?php echo $this->Html->link(__('Evaluation Summary', true), 
+								array(
+										'controller' => 'evaluations', 
+										'action' => 'summary'
 									)); ?>
 				</li>
 				<li>

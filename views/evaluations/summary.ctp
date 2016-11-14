@@ -1,6 +1,8 @@
 <style type="text/css"> 
 table tr th {text-align:center;}
 table tr td:not(:first-child) {text-align:center;}
+h2{float:left;}
+#EvaluationSummaryReportForm{float:right;clear:none;text-align:right;}
 </style>
 <h2><?php __('Evaluation Results');?></h2>
 <?php
