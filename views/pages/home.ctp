@@ -6,7 +6,7 @@
 	<h3>Please Log In</h3>
 <center>
 	<!--<img src="/eval/img/sci.jpg" alt style="margin-top: -10px;">-->
-	<?php echo $this->Html->img('sci.jpg',array('style'=>'"margin-top: -10px;'));?>
+	<?php echo $this->Html->image('sci.jpg',array('style'=>'"margin-top: -10px;'));?>
 </center>
 	
 </div>
@@ -25,7 +25,7 @@
 	<?php if($user['User']['is_admin'] == 1):?>
 	<center>
 	<!-- <img src="/eval/img/sci.jpg" alt style="margin-top: -130px;">-->
-	<?php echo $this->Html->img('sci.jpg',array('style'=>'"margin-top: -130px;'));?>
+	<?php echo $this->Html->image('sci.jpg',array('style'=>'"margin-top: -130px;'));?>
 </center>	
 		<!--admin menu -->
 		<div class="actions" style="margin-left: 100px;margin-top: 40px;">
@@ -122,7 +122,7 @@
 	<?php else:?>
 	<center>
 	<!-- <img src="/eval/img/sci.jpg" alt style="margin-top: -130px;">-->
-	<?php echo $this->Html->img('sci.jpg',array('style'=>'"margin-top: -130px;'));?>
+	<?php echo $this->Html->image('sci.jpg',array('style'=>'"margin-top: -130px;'));?>
 </center>
 		<!--student menu -->
 		<div class="actions" style="margin-left: 280px;margin-top: 29px;" >
