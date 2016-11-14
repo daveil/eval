@@ -201,4 +201,17 @@ class EvaluationsController extends AppController {
 	function summary_report(){
 		$this->summary();
 	}
+	function truncate(){
+		$queries = array();
+		array_push($queries,"TRUNCATE TABLE `evaluations`");
+		array_push($queries,"TRUNCATE TABLE `evaluation_details`");
+		array_push($queries,"TRUNCATE TABLE `evaluation_results`");
+		echo '<pre>';
+		foreach($queries as $q){
+			echo 'Executing: '.$q.'<br/>';
+			$this->Evaluation->query($q);
+		}
+		exit;
+			
+	}
 }
