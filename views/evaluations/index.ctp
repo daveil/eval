@@ -65,10 +65,11 @@
 					</tr>
 				<?php endforeach;?>
 		<?php else:?>
-		<?php endif;?>
 				<tr>
 						<td colspan="2" style="text-align:center;font-size:1.5rem;"><h4>No Evaluation Yet</h4></td>
 				</tr>
+		<?php endif;?>
+				
 			</table>
 	</div>
 	<div id="Results" class="column">
