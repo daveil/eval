@@ -59,6 +59,13 @@
 									)); ?>
 				</li>
 				<li>
+					<?php echo $this->Html->link(__('New LRN', true), 
+								array(
+										'controller' => 'lrns', 
+										'action' => 'add'
+									)); ?>
+				</li>
+				<li>
 					<?php echo $this->Html->link(__('Section', true), 
 								array(
 										'controller' => 'sections', 

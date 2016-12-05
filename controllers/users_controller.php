@@ -2,7 +2,7 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
-	var $uses = array('User','Student');
+	var $uses = array('User','Student','Lrn');
 	function beforeFilter(){ 
 		$this->Auth->userModel = 'User'; 
 		$this->Auth->allow(array('register','login','check','logout'));	
@@ -21,8 +21,17 @@ class UsersController extends AppController {
     }
 	
 	function register() {
+		$sections = $this->User->Student->Section->find('list');
+		$this->set(compact('sections'));
 		if ($this->data) {
-			if ($this->data['User']['password'] == $this->Auth->password($this->data['User']['confirm_password'])) {
+			$lrn =  $this->data['Student']['lrn'];
+			$lrnValid = $this->Lrn->findByLrn($lrn);
+			$lrnTaken =  $this->Student->findByLrn($lrn);
+			if(!$lrnValid){
+				$this->Session->setFlash(__('Invalid LRN', true));	
+			}elseif($lrnTaken){
+				$this->Session->setFlash(__('LRN Taken', true));	
+			}elseif ($this->data['User']['password'] == $this->Auth->password($this->data['User']['confirm_password'])) {
 				$this->User->create();
 				$this->User->recursive=0;
 				$this->Student->recursive=0;
@@ -30,15 +39,13 @@ class UsersController extends AppController {
 					$this->data['Student']['user_id']=$this->User->id;
 					$this->Student->save($this->data['Student']);
 					$this->Session->setFlash(__('Please login', true));	
-					
 					$data = $this->User->read(); 
 					//$this->Auth->login($data);
 					$this->redirect('/login');
 				}
 			}
 		}
-		$sections = $this->User->Student->Section->find('list');
-		$this->set(compact('sections'));
+		
 	}
 	
 	function check(){
