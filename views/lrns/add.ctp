@@ -4,7 +4,6 @@
 		<legend><?php __('Add Lrn'); ?></legend>
 	<?php
 		echo $this->Form->input('lrn');
-		echo $this->Form->input('encoded_by');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
