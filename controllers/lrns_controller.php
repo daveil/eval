@@ -19,6 +19,7 @@ class LrnsController extends AppController {
 	function add() {
 		if (!empty($this->data)) {
 			$this->Lrn->create();
+			$this->data['Lrn']['encoded_by']=$_SESSION['Auth']['User']['username'];
 			if ($this->Lrn->save($this->data)) {
 				$this->Session->setFlash(__('The lrn has been saved', true));
 				$this->redirect(array('action' => 'index'));
@@ -34,6 +35,7 @@ class LrnsController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			$this->data['Lrn']['encoded_by']=$_SESSION['Auth']['User']['username'];
 			if ($this->Lrn->save($this->data)) {
 				$this->Session->setFlash(__('The lrn has been saved', true));
 				$this->redirect(array('action' => 'index'));
