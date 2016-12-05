@@ -55,18 +55,20 @@
 				<tr>
 					<th>Student</th>
 					<th>Score</th>
+					<th>Letter Grade</th>
 				</tr>
 		<?php if (count($evals)):?>
 			
 				<?php foreach($evals as $eval):?>
 					<tr>
-						<td><?php echo $eval['Student']['User']['first_name'];?></td>
+						<td><?php echo $eval['Student']['lrn'];?></td>
 						<td><?php echo $eval['Evaluation']['score'];?></td>
+						<td><?php echo $eval['Evaluation']['letter']['description'];?></td>
 					</tr>
 				<?php endforeach;?>
 		<?php else:?>
 				<tr>
-						<td colspan="2" style="text-align:center;font-size:1.5rem;"><h4>No Evaluation Yet</h4></td>
+						<td colspan="3" style="text-align:center;font-size:1.5rem;"><h4>No Evaluation Yet</h4></td>
 				</tr>
 		<?php endif;?>
 				
