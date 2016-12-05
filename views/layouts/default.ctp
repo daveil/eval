@@ -35,7 +35,8 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1 style="font-size: x-large;"><?php echo $this->Html->link(__('Lipa City National Science High School', true), '/'); ?></h1>
+			<?php echo $this->Html->image('logo2.png', array('style'=>'width:120px;float:left;margin-bottom:10px;margin-right:10px;'));?>
+			<h1 style="font-size: x-large;margin-top:50px;"><?php echo $this->Html->link(__('Lipa City National Science High School', true), '/'); ?></h1>
 			<?php if($user):?>
 			<span id="user">
 			<?php echo $user['User']['username'];?>
