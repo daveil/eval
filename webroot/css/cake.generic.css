@@ -51,8 +51,8 @@ h1 {
 	font-size: 100%;
 }
 h2 {
-	background:lemonchiffon;
-	color: #e32;
+	background:transparent;
+	color: black;
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
 	font-size: 190%;
 }
@@ -95,7 +95,10 @@ ul, li {
 	text-decoration: underline;
 }
 #content{
-	background: lemonchiffon;
+	width:97%;
+	height:444px;
+	background-image: url('../img/bg31.jpg');
+	background-size:100% 100%;
 	clear: both;
 	color: #333;
 	padding: 10px 20px 40px 20px;
@@ -238,8 +241,8 @@ fieldset {
 	padding: 16px 20px;
 }
 fieldset legend {
-	background:lemonchiffon;
-	color: #e32;
+	background:transparent;
+	color: black;
 	font-size: 160%;
 	font-weight: bold;
 }
@@ -265,7 +268,7 @@ form div {
 	vertical-align: text-top;
 }
 form .input {
-	color: #444;
+	color: black;
 }
 form .required {
 	font-weight: bold;

@@ -4,10 +4,10 @@
 	<h2>Welcome user!</h2>
 	
 	<h3>Please Log In</h3>
-<center>
-	<!--<img src="/eval/img/sci.jpg" alt style="margin-top: -10px;">-->
+<!--<center>
+	<img src="/eval/img/sci.jpg" alt style="margin-top: -10px;">
 	<?php echo $this->Html->image('sci.jpg',array('style'=>'"margin-top: -10px;'));?>
-</center>
+</center> -->
 	
 </div>
 <div class="actions" style="margin-left: 90px;margin-top: 20px;">
@@ -20,13 +20,13 @@
 
 <?php else:?>
 	<div class="home index">
-	<h2 style="margin-left: 90px;margin-top: -158px;font-size: xx-large;"> Welcome <?php echo $user['User']['first_name'].' '.$user['User']['last_name']?>!</h2>
+	<h2 style="margin-left: 90px;margin-top: -57px;font-size: xx-large;"> Welcome <?php echo $user['User']['first_name'].' '.$user['User']['last_name']?>!</h2>
 	</div>
 	<?php if($user['User']['is_admin'] == 1):?>
-	<center>
-	<!-- <img src="/eval/img/sci.jpg" alt style="margin-top: -130px;">-->
+	<!--<center>
+	 <img src="/eval/img/sci.jpg" alt style="margin-top: -130px;">
 	<?php echo $this->Html->image('sci.jpg',array('style'=>'margin-top: -117px;'));?>
-</center>	
+</center>-->	
 		<!--admin menu -->
 		<div class="actions" style="margin-left: 100px;margin-top: 40px;">
 			<ul style="margin-left: -82px;">
@@ -127,10 +127,10 @@
 		-->
 		</div>
 	<?php else:?>
-	<center>
-	<!-- <img src="/eval/img/sci.jpg" alt style="margin-top: -130px;">-->
+	<!--<center>
+	 <img src="/eval/img/sci.jpg" alt style="margin-top: -130px;">
 	<?php echo $this->Html->image('sci.jpg',array('style'=>'margin-top: -130px;'));?>
-</center>
+</center>-->
 		<!--student menu -->
 		<div class="actions" style="margin-left: 280px;margin-top: 29px;" >
 			<ul>
