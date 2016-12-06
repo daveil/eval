@@ -8,13 +8,13 @@ class QuestionsController extends AppController {
 		$this->set('questions', $this->paginate());
 	}
 
-	function view($slug = null) {
-		if (!$slug) {
+	function view($id = null) {
+		if (!$id) {
 			$this->Session->setFlash(__('Invalid question', true));
 			$this->redirect(array('action' => 'index'));
 		
 		}
-		$this->set('question', $this->Question->findBySlug($slug));
+		$this->set('question', $this->Question->findById($id));
 	}
 
 	function add() {
@@ -34,8 +34,8 @@ class QuestionsController extends AppController {
 		$this->set(compact('categories'));
 	}
 
-	function edit($slug = null) {
-		if (!$slug && empty($this->data)) {
+	function edit($id = null) {
+		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid question', true));
 			$this->redirect(array('action' => 'index'));
 		}
@@ -50,7 +50,7 @@ class QuestionsController extends AppController {
 			}
 		}
 		if (empty($this->data)) {
-			$this->data = $this->Question->findBySlug($slug);
+			$this->data = $this->Question->findById($id);
 		}
 		$categories = $this->Question->Category->find('list');
 		$this->set(compact('categories'));

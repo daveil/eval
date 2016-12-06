@@ -49,8 +49,30 @@
 			<?php echo strtoupper($teacher['gender']); ?>
 			&nbsp;
 		</dd>
-	</dl>
-
+		</dl>
+		<h3>Students</h3>
+		<table>
+				<tr>
+					<th>Student</th>
+					<th>Score</th>
+					<th>Letter Grade</th>
+				</tr>
+		<?php if (count($evals)):?>
+			
+				<?php foreach($evals as $eval):?>
+					<tr>
+						<td><?php echo $eval['Student']['lrn'];?></td>
+						<td><?php echo $eval['Evaluation']['score'];?></td>
+						<td><?php echo $eval['Evaluation']['letter']['description'];?></td>
+					</tr>
+				<?php endforeach;?>
+		<?php else:?>
+				<tr>
+						<td colspan="3" style="text-align:center;font-size:1.5rem;"><h4>No Evaluation Yet</h4></td>
+				</tr>
+		<?php endif;?>
+				
+			</table>
 	</div>
 	<div id="Results" class="column">
 		<h3>Results</h3>

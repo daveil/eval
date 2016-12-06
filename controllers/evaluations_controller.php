@@ -11,7 +11,15 @@ class EvaluationsController extends AppController {
 			if ($this->data['Evaluation']['teacher_id']){
 				$evaluation = $this->data;
 				$results = $this->Evaluation->getAverageResult($this->data['Evaluation']['teacher_id']);
+				
 				if(!empty($evaluation)){
+					$this->Evaluation->recursive=2;
+					$conditions=array('Evaluation.id'=>$this->data['Evaluation']['teacher_id']);
+					$evals = $this->Evaluation->find('all',compact('conditions'));
+					foreach($evals as $k=>$r){
+						$letter_equiv = $this->LetterGrade->getLetterEquivalent($r['Evaluation']['score']);
+						$evals[$k]['Evaluation']['letter']=$letter_equiv['LetterGrade'];
+					}
 					foreach($results as $k => $r){
 						$results[$k]['0']['letter_score'] = $this->LetterGrade->getLetterEquivalent($results[$k]['0']['average_score']);
 						if($results[$k]['Category']['precentage']){
@@ -21,9 +29,9 @@ class EvaluationsController extends AppController {
 						//pr($results[$k]['0']['average_result'].'/'.($results[$k]['Category']['precentage']/10).'='.($results[$k]['0']['average_result']/($results[$k]['Category']['precentage']/10))*10);
 						
 					}
-					//pr($results);exit;
+					//pr($evals);exit;
 					
-					$this->set(compact('evaluation','results'));
+					$this->set(compact('evaluation','results','evals'));
 				}
 			}else{
 				$this->Session->setFlash('Select teacher');
@@ -176,7 +184,12 @@ class EvaluationsController extends AppController {
 			$this->Evaluation->recursive =2;
 			$evaluation = $this->Evaluation->findByTeacherId($this->data['Evaluation']['teacher_id']);
 			$results = $this->Evaluation->getAverageResult($this->data['Evaluation']['teacher_id']);
-			$this->set(compact('evaluation','results'));
+			$evals = $this->Evaluation->find('all',compact('conditions'));
+			foreach($evals as $k=>$r){
+				$letter_equiv = $this->LetterGrade->getLetterEquivalent($r['Evaluation']['score']);
+				$evals[$k]['Evaluation']['letter']=$letter_equiv['LetterGrade'];
+			}
+			$this->set(compact('evaluation','results','evals'));
 		}
 	}
 	function summary(){
