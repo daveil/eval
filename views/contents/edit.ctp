@@ -10,7 +10,8 @@ form div {
     margin-bottom: 0;
     padding: 0;
     vertical-align: none;
-}
+color:lemonchiffon;
+	}
 .note-frame{
 	width: 100%;
 }
