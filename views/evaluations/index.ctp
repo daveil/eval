@@ -65,10 +65,10 @@
 						<td><?php echo $eval['Evaluation']['score'];?></td>
 						<td><?php echo $eval['Evaluation']['letter']['description'];?></td>
 					</tr>
-				<?php endforeach;?>
+				<?php endforeach;?>			
 		<?php else:?>
 				<tr>
-						<td colspan="3" style="text-align:center;font-size:1.5rem;"><h4>No Evaluation Yet</h4></td>
+						<td colspan="2" style="text-align:center;font-size:1.5rem;"><h4>No Evaluation Yet</h4></td>
 				</tr>
 		<?php endif;?>
 				
