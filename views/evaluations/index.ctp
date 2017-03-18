@@ -61,7 +61,7 @@
 			
 				<?php foreach($evals as $eval):?>
 					<tr>
-						<td><?php echo $eval['Student']['lrn'];?></td>
+						<td><?php echo $eval['Student']['lrn']; echo count($evals);?></td>
 						<td><?php echo $eval['Evaluation']['score'];?></td>
 						<td><?php echo $eval['Evaluation']['letter']['description'];?></td>
 					</tr>

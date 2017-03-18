@@ -14,7 +14,7 @@ class EvaluationsController extends AppController {
 				
 				if(!empty($evaluation)){
 					$this->Evaluation->recursive=2;
-					$conditions=array('Evaluation.id'=>$this->data['Evaluation']['teacher_id']);
+					$conditions=array('Evaluation.teacher_id'=>$this->data['Evaluation']['teacher_id']);
 					$evals = $this->Evaluation->find('all',compact('conditions'));
 					foreach($evals as $k=>$r){
 						$letter_equiv = $this->LetterGrade->getLetterEquivalent($r['Evaluation']['score']);

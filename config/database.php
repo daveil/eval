@@ -4,7 +4,7 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'lcnsh_admin',
+		'login' => 'eval_170318',
 		'password' => 'j3j3m00n',
 		'database' => 'eval',
 	);
@@ -15,7 +15,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'eval',
+		'database' => 'eval_170318',
 	);
 	function __construct() {
 		if(isset($_SERVER['HTTP_HOST']))
